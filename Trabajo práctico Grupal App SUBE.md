@@ -20,7 +20,7 @@ Quedan fuera del alcance de esta versión funcionalidades como el pago directo d
 
 El objetivo principal es brindar una herramienta ágil y centralizada para la gestión de la tarjeta SUBE, facilitando el acceso digital a sus funcionalidades y reduciendo la necesidad de acudir a terminales físicas, sin descuidar a los usuarios que requieran soporte adicional.
 
-#### 1.3. Definiciones, Acrónimos y Abreviaturas
+#### 1.3 Definiciones, Acrónimos y Abreviaturas
 
 En esta subsección se definirán todos los términos, acrónimos y abreviaturas utilizadas en la ERS. Esta sección se completará y actualizará a medida que se incorporen nuevos términos específicos al sistema o al dominio.
 
@@ -48,7 +48,7 @@ El sistema también interactuará con las distintas plataformas de verificación
 
 La App SUBE busca facilitar a los usuarios el uso, la recarga, la gestión y el seguimiento de sus tarjetas, optimizando la experiencia del usuario con funcionalidades innovadoras como la recarga virtual a través de tecnología NFC, lo cual representa una evolución y una extensión de las capacidades del sistema SUBE tradicional.
 
-#### 2.2. Funciones del Producto
+#### 2.2 Funciones del Producto
 
 La "App SUBE" proporcionará a los usuarios un conjunto de funcionalidades esenciales para la gestión digital de sus tarjetas SUBE. A grandes rasgos, el sistema permitirá a los usuarios la gestión de cuentas y tarjetas, facilitando el registro y la asociación de múltiples tarjetas SUBE a un único perfil para una administración centralizada. 
 
@@ -56,7 +56,7 @@ También ofrecerá la capacidad de consultar el saldo actualizado de las tarjeta
 
 Además, el sistema soportará la realización de recargas de saldo mediante diversos medios de pago digitales y enviará alertas y notificaciones relevantes al usuario relacionadas con el estado de sus tarjetas y transacciones. Finalmente, incluirá una funcionalidad para la localización de terminales físicas de validación de carga.
 
-#### 2.3. Características de los Usuarios
+#### 2.3 Características de los Usuarios
 
 La aplicación "App SUBE" está pensada para un público amplio y diverso, compuesto principalmente por ciudadanos argentinos que utilizan el transporte público y cuentan con una tarjeta SUBE. Se parte del supuesto de que los usuarios ya están familiarizados con el uso tradicional de la tarjeta en su formato físico.
 
@@ -88,7 +88,7 @@ El desarrollo de la "App SUBE" estará condicionado por las siguientes restricci
 **Criticalidad:**
 - El sistema debe mantener altos estándares de disponibilidad y confiabilidad debido a su uso en el transporte público
 
-#### 2.5. Suposiciones y Dependencias
+#### 2.5 Suposiciones y Dependencias
 
 El funcionamiento y la evolución de la "App SUBE" están sujetos a una serie de suposiciones y dependen de factores externos que, de modificarse, podrían impactar directamente los requisitos del sistema. 
 
