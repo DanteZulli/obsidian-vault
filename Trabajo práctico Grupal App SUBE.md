@@ -6,17 +6,15 @@
 
 #### 1.1 Propósito
 
-El presente documento tiene como finalidad especificar de manera clara, completa y estructurada los requisitos del sistema “App SUBE”, una aplicación destinada a la gestión virtual de tarjetas SUBE utilizadas en el transporte público en Argentina.
+El presente documento tiene como finalidad especificar de manera clara, completa y estructurada los requisitos del sistema "App SUBE", una aplicación destinada a la gestión virtual de tarjetas SUBE utilizadas en el transporte público en Argentina.
 
 Su contenido está dirigido al futuro equipo de desarrollo de software, incluyendo analistas funcionales, diseñadores, programadores, testers y personal de aseguramiento de calidad (QA), con el objetivo de facilitar el diseño, desarrollo, validación y mantenimiento del sistema.  
 
 #### 1.2 Ámbito del Sistema
 
-El sistema a desarrollar se denominará “App SUBE” y consistirá en una aplicación móvil y web destinada a la gestión digital de tarjetas SUBE, utilizadas en el transporte público de Argentina. 
+El sistema a desarrollar se denominará "App SUBE" y consistirá en una aplicación móvil y web destinada a la gestión digital de tarjetas SUBE, utilizadas en el transporte público de Argentina. 
 
-El sistema permitirá a los usuarios registrarse, asociar una o más tarjetas SUBE a su cuenta, consultar el saldo actualizado, visualizar movimientos recientes (viajes y recargas), realizar recargas virtuales mediante medios de pago digitales, recibir notificaciones relevantes y administrar múltiples tarjetas desde un mismo perfil.
-
-Como complemento, incluirá un mapa interactivo con terminales físicas disponibles para validación presencial, pensado para usuarios cuyos dispositivos no cuenten con tecnología NFC para efectuar las recargas de manera virtual.
+El sistema permitirá a los usuarios gestionar sus tarjetas SUBE de manera digital, facilitando el acceso a sus funcionalidades principales y reduciendo la necesidad de acudir a terminales físicas. La aplicación servirá como complemento al ecosistema existente del Sistema Único de Boleto Electrónico, integrando funcionalidades tradicionales con nuevas capacidades digitales.
 
 Quedan fuera del alcance de esta versión funcionalidades como el pago directo del transporte, integración con recorridos o localización en tiempo real, edición de datos personales desde la aplicación o transferencia de saldo entre tarjetas, entre otras funcionalidades que podrán ser consideradas en versiones futuras del sistema.
 
@@ -29,6 +27,16 @@ En esta subsección se definirán todos los términos, acrónimos y abreviaturas
 - **SUBE / Tarjeta SUBE / Sistema Único de Boleto Electrónico:** Sistema de pago electrónico implementado en Argentina en 2009 para el transporte público. Funciona en colectivos, trenes, subtes, metrotranvías, trolebuses y lanchas, y es utilizado por millones de personas en diversas localidades del país.
   
 - **NFC (Near Field Communication):** Tecnología de comunicación inalámbrica de corto alcance que permite el intercambio de datos entre dispositivos cuando están muy cerca el uno del otro. En el contexto de la App SUBE, se refiere a la funcionalidad de dispositivos móviles (teléfonos) que permite validar y acreditar cargas directamente en la tarjeta SUBE sin necesidad de una terminal física.
+
+#### 1.4 Referencias
+
+El desarrollo de la "App SUBE" se basa en la documentación oficial del Sistema Único de Boleto Electrónico, disponible en el [portal del gobierno argentino](https://www.argentina.gob.ar/sube). Asimismo, se consideran las normativas vigentes en materia de protección de datos personales ([Ley N° 25.326](https://www.argentina.gob.ar/sites/default/files/arg_ley25326.pdf)).
+
+Para el diseño de la interfaz de usuario, se han tomado como referencia las guías oficiales de diseño de las principales plataformas móviles: las [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/) de Apple para iOS y las [Material Design Guidelines](https://m2.material.io/design/guidelines-overview) de Google para Android. Estas guías proporcionan estándares y mejores prácticas para crear experiencias de usuario consistentes y accesibles en cada plataforma.
+
+#### 1.5 Visión General del Documento
+
+Este documento de Especificación de Requisitos Software (ERS) está estructurado en cuatro secciones principales que guían al lector desde una visión general hasta los detalles específicos de implementación. La primera sección introduce el propósito y contexto del sistema, mientras que la segunda proporciona una descripción general de sus características y limitaciones. La tercera sección detalla los requisitos específicos que el sistema debe cumplir, y finalmente, los apéndices contienen información complementaria relevante para el desarrollo.
 
 ### 2. Descripción General
 
@@ -58,19 +66,27 @@ Aunque la aplicación está diseñada para ser intuitiva y fácil de usar, se re
 
 #### 2.4 Restricciones
 
-El desarrollo de la "App SUBE" estará condicionado por diversas restricciones que afectarán tanto el diseño como la implementación del sistema.
+El desarrollo de la "App SUBE" estará condicionado por las siguientes restricciones:
 
-Una de las limitaciones principales es la dependencia de las APIs proporcionadas por los responsables del sistema SUBE. Esto significa que la funcionalidad de la aplicación estará sujeta a las capacidades, limitaciones y criterios de integración definidos por dichas interfaces.
+**Políticas y Regulaciones:**
+- Cumplimiento estricto de las normativas vigentes en Argentina en materia de seguridad y privacidad de datos
+- Adherencia a las políticas operativas y comerciales establecidas dentro del ecosistema SUBE
 
-Además, la arquitectura del sistema deberá ser multiplataforma, asegurando compatibilidad y buen rendimiento en dispositivos Android e iOS, así como en navegadores web modernos. Esto requiere el uso de tecnologías y prácticas de desarrollo que permitan mantener una experiencia de usuario coherente y eficiente en distintos entornos.
+**Interfaces y Dependencias:**
+- Dependencia de las APIs proporcionadas por los responsables del sistema SUBE
+- Integración obligatoria con múltiples pasarelas de pago y servicios financieros digitales
+- Necesidad de interoperabilidad con el sistema SUBE existente
 
-Otras restricciones relevantes incluyen el cumplimiento estricto de las normativas vigentes en Argentina en materia de seguridad y privacidad de datos, especialmente en lo que respecta al tratamiento de información personal y datos sensibles de carácter transaccional.
+**Limitaciones Técnicas:**
+- Restricciones impuestas por las capacidades del hardware móvil (especialmente en relación a la tecnología NFC)
+- Requisitos de accesibilidad multiplataforma para distintos dispositivos
 
-El sistema también deberá integrarse con múltiples pasarelas de pago y servicios financieros digitales, lo cual impone requisitos técnicos específicos en cuanto a protocolos de comunicación y compatibilidad con terceros.
+**Consideraciones de Seguridad:**
+- Tratamiento especial de información personal y datos sensibles de carácter transaccional
+- Implementación de protocolos de comunicación seguros para transacciones financieras
 
-Por otro lado, las capacidades del hardware móvil, particularmente la disponibilidad de tecnología NFC para funciones como la recarga virtual, representan una limitación funcional a considerar, dado que no todos los dispositivos soportan esta característica.
-
-Finalmente, las políticas operativas y comerciales establecidas dentro del ecosistema SUBE pueden imponer restricciones adicionales sobre los flujos de trabajo, procesos o decisiones funcionales que la aplicación debe respetar.
+**Criticalidad:**
+- El sistema debe mantener altos estándares de disponibilidad y confiabilidad debido a su uso en el transporte público
 
 #### 2.5. Suposiciones y Dependencias
 
@@ -97,7 +113,16 @@ Adicionalmente, se prevé la inclusión de funcionalidades para la edición de d
 Otra mejora planificada es la capacidad de transferir saldo entre diferentes tarjetas SUBE asociadas a la misma cuenta, lo que brindaría mayor flexibilidad en la administración familiar o personal de los recursos. 
 
 Estas funcionalidades futuras serán evaluadas y priorizadas en función de la evolución de las necesidades de los usuarios y las capacidades del ecosistema SUBE.
+
 ### 3. Requisitos Específicos
+
+#### 3.1 Interfaces Externas
+
+La aplicación deberá proporcionar una interfaz gráfica intuitiva y accesible que siga las guías de diseño establecidas para cada plataforma (Material Design para Android y Human Interface Guidelines para iOS). La interfaz debe ser compatible con tecnologías de asistencia.
+
+En cuanto a las interfaces con otros sistemas, la aplicación se integrará con el sistema central de SUBE mediante APIs REST, permitiendo la sincronización de datos y operaciones. También se establecerán conexiones con pasarelas de pago como Mercado Pago, Ualá, etc. y se integrarán servicios de geolocalización como Google Maps para el mapa de terminales. Para mantener a los usuarios informados, se implementará un sistema de notificaciones push.
+
+Las comunicaciones del sistema deberán realizarse de manera segura utilizando HTTPS/TLS 1.2 o superior. Se implementará soporte para el protocolo NFC para las recargas virtuales, y se utilizarán WebSockets para mantener actualizaciones en tiempo real de la información relevante.
 
 #### 3.2 Funciones
 
@@ -121,6 +146,14 @@ El desarrollo del sistema deberá considerar una arquitectura multiplataforma co
 - **Seguridad:** La información sensible, como contraseñas y datos personales, deberá ser almacenada utilizando técnicas de cifrado seguras (por ejemplo, hashing con salt para contraseñas). Las comunicaciones deberán realizarse bajo protocolo HTTPS.
 - **Usabilidad:** La aplicación deberá contar con una interfaz intuitiva, accesible para personas con dificultades visuales, y optimizada para dispositivos móviles.
 - **Escalabilidad:** El diseño del sistema debe permitir incorporar nuevas funcionalidades sin afectar el rendimiento general.
+
+#### 3.6 Otros Requisitos
+
+La aplicación debe estar disponible en todas las provincias de Argentina, considerando las diferentes zonas horarias del país y manejando correctamente los formatos de fecha y hora locales. Esto implica una cuidadosa consideración de la localización y regionalización del sistema.
+
+En términos de certificación, la aplicación deberá cumplir con los estándares de seguridad establecidos por Google Play Store y Apple App Store, así como obtener las certificaciones necesarias para operar como aplicación financiera (por los cobros a través de pasarelas de pago). Esto incluye el cumplimiento de normativas de accesibilidad específicas para cada plataforma.
+
+La documentación del sistema deberá ser completa y accesible, incluyendo una guía de usuario detallada, documentación técnica para desarrolladores y manuales de procedimientos para el equipo de soporte. Esta documentación será fundamental para garantizar el mantenimiento y la evolución del sistema a largo plazo.
 
 ### 4. Apéndices
 
