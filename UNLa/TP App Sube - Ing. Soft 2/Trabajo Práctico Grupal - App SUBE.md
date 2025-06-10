@@ -1,16 +1,16 @@
 ```table-of-contents
 ```
-## 1er Punto - Definición de Ideas o Requisitos según el [Estándar IEEE 830](https://www.fdi.ucm.es/profesor/gmendez/docs/is0809/ieee830.pdf)
+## A. Definición de Ideas o Requisitos según el [Estándar IEEE 830](https://www.fdi.ucm.es/profesor/gmendez/docs/is0809/ieee830.pdf)
 
-### 1. Introducción
+### A.1. Introducción
 
-#### 1.1 Propósito
+#### A.1.1. Propósito
 
 El presente documento tiene como finalidad especificar de manera clara, completa y estructurada los requisitos del sistema "App SUBE", una aplicación destinada a la gestión virtual de tarjetas SUBE utilizadas en el transporte público en Argentina.
 
 Su contenido está dirigido al futuro equipo de desarrollo de software, incluyendo analistas funcionales, diseñadores, programadores, testers y personal de aseguramiento de calidad (QA), con el objetivo de facilitar el diseño, desarrollo, validación y mantenimiento del sistema.  
 
-#### 1.2 Ámbito del Sistema
+#### A.1.2. Ámbito del Sistema
 
 El sistema a desarrollar se denominará "App SUBE" y consistirá en una aplicación móvil y web destinada a la gestión digital de tarjetas SUBE, utilizadas en el transporte público de Argentina. 
 
@@ -20,7 +20,7 @@ Quedan fuera del alcance de esta versión funcionalidades como el pago directo d
 
 El objetivo principal es brindar una herramienta ágil y centralizada para la gestión de la tarjeta SUBE, facilitando el acceso digital a sus funcionalidades y reduciendo la necesidad de acudir a terminales físicas, sin descuidar a los usuarios que requieran soporte adicional.
 
-#### 1.3 Definiciones, Acrónimos y Abreviaturas
+#### A.1.3. Definiciones, Acrónimos y Abreviaturas
 
 En esta subsección se definirán todos los términos, acrónimos y abreviaturas utilizadas en la ERS.
 
@@ -36,19 +36,19 @@ En esta subsección se definirán todos los términos, acrónimos y abreviaturas
 
 - **WebSockets:** Protocolo de comunicación que proporciona un canal de comunicación bidireccional y persistente entre el cliente y el servidor, permitiendo actualizaciones en tiempo real.
 
-#### 1.4 Referencias
+#### A.1.4. Referencias
 
 El desarrollo de la "App SUBE" se basa en la documentación oficial del Sistema Único de Boleto Electrónico, disponible en el [portal del gobierno argentino](https://www.argentina.gob.ar/sube). Asimismo, se consideran las normativas vigentes en materia de protección de datos personales ([Ley N° 25.326](https://www.argentina.gob.ar/sites/default/files/arg_ley25326.pdf)).
 
 Para el diseño de la interfaz de usuario, se han tomado como referencia las guías oficiales de diseño de las principales plataformas móviles: las [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/) de Apple para iOS y las [Material Design Guidelines](https://m2.material.io/design/guidelines-overview) de Google para Android. Estas guías proporcionan estándares y mejores prácticas para crear experiencias de usuario consistentes y accesibles en cada plataforma.
 
-#### 1.5 Visión General del Documento
+#### A.1.5. Visión General del Documento
 
 Este documento de Especificación de Requisitos Software (ERS) está estructurado en cuatro secciones principales que guían al lector desde una visión general hasta los detalles específicos de implementación. La primera sección introduce el propósito y contexto del sistema, mientras que la segunda proporciona una descripción general de sus características y limitaciones. La tercera sección detalla los requisitos específicos que el sistema debe cumplir, y finalmente, los apéndices contienen información complementaria relevante para el desarrollo.
 
-### 2. Descripción General
+### A.2. Descripción General
 
-#### 2.1 Perspectiva del Producto
+#### A.2.1. Perspectiva del Producto
 
 La "App SUBE" se concibe como un complemento al ecosistema existente del Sistema Único de Boleto Electrónico (SUBE) en Argentina. No es un sistema independiente, sino que depende directamente de las APIs expuestas por el gobierno de la nación (los propietarios originales del sistema SUBE). A través de estas APIs, la aplicación podrá consultar y registrar información esencial para el usuario, como los viajes realizados, las cargas efectuadas y otros movimientos de la tarjeta.
 
@@ -56,7 +56,7 @@ El sistema también interactuará con las distintas plataformas de verificación
 
 La App SUBE busca facilitar a los usuarios el uso, la recarga, la gestión y el seguimiento de sus tarjetas, optimizando la experiencia del usuario con funcionalidades innovadoras como la recarga virtual a través de tecnología NFC, lo cual representa una evolución y una extensión de las capacidades del sistema SUBE tradicional.
 
-#### 2.2 Funciones del Producto
+#### A.2.2. Funciones del Producto
 
 La "App SUBE" proporcionará a los usuarios un conjunto de funcionalidades esenciales para la gestión digital de sus tarjetas SUBE. A grandes rasgos, el sistema permitirá a los usuarios la gestión de cuentas y tarjetas, facilitando el registro y la asociación de múltiples tarjetas SUBE a un único perfil para una administración centralizada. 
 
@@ -64,7 +64,7 @@ También ofrecerá la capacidad de consultar el saldo actualizado de las tarjeta
 
 Además, el sistema soportará la realización de recargas de saldo mediante diversos medios de pago digitales y enviará alertas y notificaciones relevantes al usuario relacionadas con el estado de sus tarjetas y transacciones. Finalmente, incluirá una funcionalidad para la localización de terminales físicas de validación de carga.
 
-#### 2.3 Características de los Usuarios
+#### A.2.3. Características de los Usuarios
 
 La aplicación "App SUBE" está pensada para un público amplio y diverso, compuesto principalmente por ciudadanos argentinos que utilizan el transporte público y cuentan con una tarjeta SUBE. Se parte del supuesto de que los usuarios ya están familiarizados con el uso tradicional de la tarjeta en su formato físico.
 
@@ -72,7 +72,7 @@ Se asume que el usuario promedio tiene conocimientos básicos o intermedios en e
 
 Aunque la aplicación está diseñada para ser intuitiva y fácil de usar, se reconoce que algunos usuarios pueden no estar habituados a ciertas funciones digitales, como la recarga virtual o la validación por NFC. Por eso, la interfaz y los mensajes deben ser claros y guiados, minimizando cualquier posible confusión.
 
-#### 2.4 Restricciones
+#### A.2.4. Restricciones
 
 El desarrollo de la "App SUBE" estará condicionado por las siguientes restricciones:
 
@@ -92,7 +92,7 @@ El desarrollo de la "App SUBE" estará condicionado por las siguientes restricci
 **Criticalidad:**
 - El sistema debe mantener altos estándares de disponibilidad y confiabilidad debido a su uso en el transporte público
 
-#### 2.5 Suposiciones y Dependencias
+#### A.2.5. Suposiciones y Dependencias
 
 El funcionamiento y la evolución de la "App SUBE" están sujetos a una serie de suposiciones y dependen de factores externos que, de modificarse, podrían impactar directamente los requisitos del sistema. 
 
@@ -106,7 +106,7 @@ Las actualizaciones de los sistemas operativos Android e iOS no deberían genera
 
 Finalmente, se asume que los usuarios dispondrán de una conexión a internet estable al momento de realizar operaciones críticas como recargas o consultas de saldo en tiempo real. Sin embargo, para la visualización de datos históricos de viajes o movimientos, una conexión inicial para sincronizar la información será suficiente, permitiendo un acceso posterior sin conectividad constante para la información ya descargada.
 
-#### 2.6 Requisitos Futuros
+#### A.2.6. Requisitos Futuros
 
 Aunque la versión inicial de la "App SUBE" se enfoca en la gestión centralizada y digital de las tarjetas SUBE, se han identificado diversas funcionalidades que, si bien quedan fuera del alcance de esta entrega, se contemplan para ser implementadas en futuras iteraciones del sistema. 
 
@@ -118,9 +118,9 @@ Otra mejora planificada es la capacidad de transferir saldo entre diferentes tar
 
 Estas funcionalidades futuras serán evaluadas y priorizadas en función de la evolución de las necesidades de los usuarios y las capacidades del ecosistema SUBE.
 
-### 3. Requisitos Específicos
+### A.3. Requisitos Específicos
 
-#### 3.1 Interfaces Externas
+#### A.3.1. Interfaces Externas
 
 La aplicación deberá proporcionar una interfaz gráfica intuitiva y accesible que siga las guías de diseño establecidas para cada plataforma. La interfaz debe ser compatible con tecnologías de asistencia y proporcionar una experiencia de usuario consistente y predecible.
 
@@ -128,11 +128,11 @@ En cuanto a las interfaces con otros sistemas, la aplicación se integrará con 
 
 Las comunicaciones del sistema deberán realizarse de manera segura utilizando HTTPS/TLS 1.2 o superior. Se implementará soporte para el protocolo NFC para las recargas virtuales, y se utilizarán WebSockets para mantener actualizaciones en tiempo real de la información relevante.
 
-#### 3.2 Funciones
+#### A.3.2. Funciones
 
 Esta subsección detalla las funcionalidades que el sistema "App SUBE" deberá ofrecer a los usuarios, organizadas principalmente por **objetivos** que el sistema persigue y, cuando aplica, por **tipo de usuario** para detallar las funcionalidades específicas que le conciernen. Esta organización permite una comprensión clara de los servicios que el sistema provee y cómo cada grupo de usuarios interactúa con ellos.
 
-##### 3.2.1 Por Objetivos
+##### A.3.2.1. Por Objetivos
 
 Las funciones del sistema se agrupan según los principales objetivos que la "App SUBE" busca cumplir para el usuario:
 
@@ -162,7 +162,7 @@ Las funciones del sistema se agrupan según los principales objetivos que la "Ap
     
     - **Localización de Terminales Físicas de Validación:** El sistema deberá permitir al **usuario registrado** localizar en un mapa las terminales físicas de validación de carga y recarga de SUBE más cercanas a su ubicación actual o a una ubicación específica.
 
-##### 3.2.2 Por Tipo de Usuario
+##### A.3.2.2. Por Tipo de Usuario
 
 Para el sistema "App SUBE", se identifica un único tipo principal de usuario: el **Usuario Final del Transporte Público**. Las funcionalidades que le conciernen, con un enfoque particular en la interfaz de usuario (UI), la accesibilidad y la experiencia general, son las siguientes:
 
@@ -179,22 +179,22 @@ Para el sistema "App SUBE", se identifica un único tipo principal de usuario: e
     - **Flujo de Recarga Sencillo y Guiado:** El proceso de recarga virtual, incluyendo la interacción NFC, deberá ser intuitivo y ofrecer instrucciones paso a paso claras, con mensajes de error descriptivos en caso de problemas. La **interacción con el hardware NFC** deberá ser guiada visualmente, indicando al usuario cómo y cuándo acercar la tarjeta.
     - **Retroalimentación Consistente:** En todas las interacciones, el sistema deberá proporcionar una **retroalimentación visual y auditiva consistente** para confirmar acciones, indicar estados de carga o señalar errores, lo que contribuye a una experiencia de usuario predecible y tranquilizadora.
 
-#### 3.3 Requisitos de Rendimiento
+#### A.3.3. Requisitos de Rendimiento
 
 El sistema deberá responder a las operaciones críticas, tales como consultas de saldo y recargas, en un tiempo menor a 2 segundos bajo condiciones normales de conectividad. Se espera que el sistema pueda atender al menos 10.000 usuarios simultáneamente sin degradación perceptible del servicio.
 
-#### 3.4 Restricciones de Diseño
+#### A.3.4. Restricciones de Diseño
 
 El desarrollo del sistema deberá considerar una arquitectura multiplataforma compatible con Android, iOS y navegadores web modernos. El backend deberá estar diseñado de manera modular para facilitar su mantenimiento y futuras ampliaciones. Se recomienda utilizar tecnologías estándares y ampliamente soportadas.
 
-#### 3.5 Atributos del Sistema
+#### A.3.5. Atributos del Sistema
 
 - **Disponibilidad:** El sistema deberá estar disponible 24/7 con un tiempo de actividad (uptime) mensual superior al 99%.
 - **Seguridad:** La información sensible, como contraseñas y datos personales, deberá ser almacenada utilizando técnicas de cifrado seguras (por ejemplo, hashing con salt para contraseñas). Las comunicaciones deberán realizarse bajo protocolo HTTPS.
 - **Usabilidad:** La aplicación deberá contar con una interfaz intuitiva, accesible para personas con dificultades visuales, y optimizada para dispositivos móviles.
 - **Escalabilidad:** El diseño del sistema debe permitir incorporar nuevas funcionalidades sin afectar el rendimiento general.
 
-#### 3.6 Otros Requisitos
+#### A.3.6. Otros Requisitos
 
 La aplicación debe estar disponible en todas las provincias de Argentina, considerando las diferentes zonas horarias del país y manejando correctamente los formatos de fecha y hora locales. Esto implica una cuidadosa consideración de la localización y regionalización del sistema.
 
@@ -202,7 +202,7 @@ En términos de certificación, la aplicación deberá cumplir con los estándar
 
 La documentación del sistema deberá ser completa y accesible, incluyendo una guía de usuario detallada, documentación técnica para desarrolladores y manuales de procedimientos para el equipo de soporte. Esta documentación será fundamental para garantizar el mantenimiento y la evolución del sistema a largo plazo.
 
-### 4. Apéndices
+### A.4. Apéndices
 
 **Lenguaje de Programación**
 
@@ -212,13 +212,13 @@ Por lo tanto, se priorizará el uso de tecnologías que permitan escribir una ú
 
 A modo de ejemplo, se recomienda la consideración de lenguajes y entornos como TypeScript con frameworks como React Native o Flutter para el desarrollo de las aplicaciones móviles y web, dada su capacidad para generar código nativo a partir de una única base de código. 
 
-## 2do Punto - Análisis, Definición de Casos de Uso y Estimación por Puntos de Caso de Uso
+## B. Análisis, Definición de Casos de Uso y Estimación por Puntos de Caso de Uso
 
-### 1. Casos de Uso Identificados
+### B.1. Casos de Uso Identificados
 
 En base a los requisitos funcionales (definidos previamente en la ERS del primer punto), identificamos los siguientes 5 casos de uso principales:
 
-#### 1.1 Caso de Uso CU01 – Registro de Usuario
+#### B.1.1. Caso de Uso CU01 – Registro de Usuario
 
 - **Objetivos asociados**:
     - Permitir que nuevos usuarios accedan al sistema App SUBE.
@@ -232,11 +232,11 @@ En base a los requisitos funcionales (definidos previamente en la ERS del primer
     - El usuario cuenta con acceso a internet.
     - El usuario no posee una cuenta registrada con ese correo electrónico.
 - **Secuencia normal**:
-    1. El usuario accede a la aplicación y selecciona “Registrarse”.
+    1. El usuario accede a la aplicación y selecciona "Registrarse".
     2. El sistema muestra un formulario de registro.
     3. El usuario completa nombre, DNI, correo electrónico y contraseña.
     4. El sistema valida los datos ingresados.
-    5. El sistema crea la cuenta en estado “pendiente de verificación”.
+    5. El sistema crea la cuenta en estado "pendiente de verificación".
     6. El sistema envía un correo de confirmación con enlace de activación.
     7. El usuario accede al correo y confirma su cuenta mediante el enlace.
     8. El sistema activa la cuenta y permite iniciar sesión.
@@ -253,7 +253,7 @@ En base a los requisitos funcionales (definidos previamente en la ERS del primer
     - El correo de confirmación es esencial para evitar registros fraudulentos.
     - Puede contemplarse en el futuro el registro con autenticación social (Google, Facebook, etc).
 
-#### 1.2 Caso de Uso CU02 – Asociar Tarjeta SUBE
+#### B.1.2. Caso de Uso CU02 – Asociar Tarjeta SUBE
 
 - **Objetivos asociados**:
     - Permitir al usuario gestionar una o más tarjetas SUBE desde la aplicación.
@@ -266,7 +266,7 @@ En base a los requisitos funcionales (definidos previamente en la ERS del primer
     - El usuario ha iniciado sesión en la App SUBE.
     - El número de tarjeta SUBE ingresado no está previamente asociado a otro usuario.
 - **Secuencia normal**:
-    1. El usuario accede a la sección “Mis tarjetas” y selecciona “Asociar nueva tarjeta”.
+    1. El usuario accede a la sección "Mis tarjetas" y selecciona "Asociar nueva tarjeta".
     2. El sistema solicita el número de tarjeta SUBE.
     3. El usuario ingresa el número y confirma.
     4. El sistema valida el formato y verifica con la API del sistema SUBE.
@@ -283,7 +283,7 @@ En base a los requisitos funcionales (definidos previamente en la ERS del primer
 - **Comentarios**:
     - Se podría permitir en el futuro agregar un alias a cada tarjeta para facilitar su identificación.
 
-#### 1.3 Caso de Uso CU03 – Consultar Saldo
+#### B.1.3. Caso de Uso CU03 – Consultar Saldo
   
 - **Objetivos asociados**:
     - Permitir al usuario consultar el saldo actual de sus tarjetas SUBE.
@@ -310,7 +310,7 @@ En base a los requisitos funcionales (definidos previamente en la ERS del primer
 - **Comentarios**:
     - Puede ofrecerse una vista offline con el último saldo consultado si se guarda localmente (mejora futura).
 
-#### 1.4 Caso de Uso CU04 – Consultar Últimos Movimientos
+#### B.1.4. Caso de Uso CU04 – Consultar Últimos Movimientos
 
 - **Objetivos asociados**:    
     - Permitir al usuario visualizar el historial de viajes y recargas realizados con su tarjeta SUBE.
@@ -322,7 +322,7 @@ En base a los requisitos funcionales (definidos previamente en la ERS del primer
 - **Precondición**:
     - El usuario ha iniciado sesión y tiene al menos una tarjeta asociada.
 - **Secuencia normal**:
-    1. El usuario accede a la sección “Historial de movimientos”.
+    1. El usuario accede a la sección "Historial de movimientos".
     2. Selecciona una tarjeta de la lista.
     3. El sistema realiza una consulta al sistema SUBE para obtener el historial.
     4. El sistema muestra una lista cronológica de movimientos con detalles por fila (tipo, monto, fecha).
@@ -336,7 +336,7 @@ En base a los requisitos funcionales (definidos previamente en la ERS del primer
 - **Comentarios**:
     - Podría agregarse una opción para exportar el historial como PDF o Excel en futuras versiones.
 
-#### 1.5 Caso de Uso CU05 – Recargar Saldo
+#### B.1.5. Caso de Uso CU05 – Recargar Saldo
 
 - **Objetivos asociados**:    
     - Permitir que el usuario recargue virtualmente su tarjeta SUBE.
@@ -350,7 +350,7 @@ En base a los requisitos funcionales (definidos previamente en la ERS del primer
     - Tiene al menos una tarjeta asociada.
     - Dispone de conexión a internet.
 - **Secuencia normal**:
-    1. El usuario accede a la sección “Recargar”.
+    1. El usuario accede a la sección "Recargar".
     2. Selecciona una tarjeta.
     3. Ingresa el monto deseado.
     4. Elige el medio de pago (tarjeta, billetera virtual).
@@ -370,7 +370,7 @@ En base a los requisitos funcionales (definidos previamente en la ERS del primer
 - **Comentarios**:
     - Es uno de los pilares de valor agregado frente a las terminales físicas.
     - Debe contemplar múltiples pasarelas de pago para disponibilidad constante.
-### 2. Actores y Acciones Involucradas (en cada caso de uso)
+### B.2. Actores y Acciones Involucradas (en cada caso de uso)
 
 | Caso de Uso               | Actores Involucrados                                                        | Acciones del Actor                                                                                                                                                                                                                                                                                                                                                        |
 | ------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -379,27 +379,27 @@ En base a los requisitos funcionales (definidos previamente en la ERS del primer
 | **Consultar Saldo**       | Usuario, Sistema SUBE, Servidor de Aplicación                               | - **Usuario**: Selecciona una tarjeta y solicita ver el saldo actual.<br>- **Servidor de Aplicación**: Envía solicitud de consulta a Sistema SUBE.<br>- **Sistema SUBE**: Devuelve el saldo actualizado de la tarjeta.<br>- **Servidor de Aplicación**: Presenta el resultado al usuario.                                                                                 |
 | **Consultar Movimientos** | Usuario, Sistema SUBE, Servidor de Aplicación                               | - **Usuario**: Selecciona una tarjeta y solicita historial.<br>- **Servidor de Aplicación**: Solicita movimientos a Sistema SUBE.<br>- **Sistema SUBE**: Responde con historial (viajes, recargas).<br>- **Servidor de Aplicación**: Muestra los datos en la interfaz.                                                                                                    |
 | **Recargar Saldo**        | Usuario, Pasarela de Pago, Sistema SUBE, Servidor de Aplicación, Módulo NFC | - **Usuario**: Elige tarjeta, monto y medio de pago, confirma.<br>- **Servidor de Aplicación**: Inicia transacción, coordina con pasarela de pago.<br>- **Pasarela de Pago**: Procesa el pago (tarjeta, billetera, etc).<br>- **Sistema SUBE**: Acredita saldo.<br>- **Módulo NFC**: En caso de ser requerido, permite validar la carga acercando la tarjeta al teléfono. |
-### 3. Diagramas de Casos de Uso
+### B.3. Diagramas de Casos de Uso
 
 > **Nota:** Todos los diagramas fueron elaborados utilizando [PlantUML](https://www.plantuml.com). En caso de que las imágenes no se puedan ver con claridad, se adjunta el enlace a la página con la definición completa del diagrama.
 
-#### 3.1 Diagrama CU01 – Registro de Usuario 
+#### B.3.1. Diagrama CU01 – Registro de Usuario 
 [Link](https://www.plantuml.com/plantuml/uml/RP5FQlCm4CNtEiNWVU3BdzL724b3wBuXtG_In1qgIsP6JbjAJzKZz6AL7GL4suNXpRpV4q_oLXDA6ZflF9qJf0Z2xLC2nq8sSGn6dpdqADW1sXJbcDuy0RwGnewCcNRGd7H0uTW0AXHziuua5tPPEO9z5A69Al8lQDTxjcZvwpECP9vxOyOs65fFqEGPZgUxGmFl1c1GigXvVK-QninuX1qe9BossV-hgGTgMPEWQAPYXZ55XPv4Oq1FMZBpElE8dXrAOJcqGeektjX5pHx2XJFQ8VkfI0ndbkvwcy8lQtvd4rzGIkCSqPoYuD5ImLVcmvZofZ2RRQORvQ_eEVo7zPfU4mMtsPYyACPYCZXOFpYQd4Lnbh-SPN5MFnnp_Kktd1cVlfnUwNg_ggjEyvQ26ph_3G00)
 ![[diagrama_cu01.png]]
-#### 3.2 Diagrama CU02 – Asociar Tarjeta SUBE
+#### B.3.2. Diagrama CU02 – Asociar Tarjeta SUBE
 [Link](https://www.plantuml.com/plantuml/uml/RP9DR_8m383l_XKMTwGNokaLGh1fcdP6x6wbXdbh4-Iux6FQhzfjL_xOaYwWxkDGoVRps8sZBAEHMjSsqF3Mq0AgxEuCQr5s9i53V12_9wKMoLdGjJqtZFJ8CRGCqDTmj8aTgOGHKiGIdz1Qed5BkDvSNFKy1sV8Uf0wHJNZQj-88oV7Tv-zbEy1yYd8xnh6KShBa5T0x28xYgbypT5oJnvXfFTi5B_ESVblwDtudN8aHN_yQ5d3m2_wPAZVKYDrihT1Mx8_xEatcrMsuf9_o7tyWkmn3ZOlJTMmQHM34zBJN2Hq7Vlp3sRm1b0k4yVZHRzG-aeymVyud_EJiQyN2qY50gOz4E-QhkQUJ0kfVf6gaDaF0lcooxX1N47UvPGCm0nWoRxEx-WJ)
 ![[diagrama_cu02.png]]
-#### 3.3 Diagrama CU03 – Consultar Saldo
+#### B.3.3. Diagrama CU03 – Consultar Saldo
 [Link](https://www.plantuml.com/plantuml/uml/RP7TIaCn3CVlynHXzmEttSaOcyCBBmJXi0S8RPpLddOaENueFfMFu8lP7kiSuaNXd_poyITTgv7Oq4U8V6je6INixmnz47OMSW9z2Eb0GZsIiooTlKH6UcBDFGECEPpiT209UOAasFGFwe8QzuJTxk9ov5KS8SjZy4LvniqX1aSkV7waMbVY0q1rGMaV6ISbRaFU075GTgGblSr9XsXKHoX5tqnipqwBEexiNCY918taderQsUo_MOARcolq755FtBUE-Md7TLOJak_DzK83nV1AHnSBU0Te5y7fT3KQAw_f6PxZSidFniclLb0I3Sn749ABW-UHp1jP_25GxzAQeDey1hzW0R0k6-etVm40)
 ![[diagrama_cu03.png]]
-#### 3.4 Diagrama CU04 – Consultar Últimos Movimientos
+#### B.3.4. Diagrama CU04 – Consultar Últimos Movimientos
 [Link](https://www.plantuml.com/plantuml/uml/RP9DRXin38NtEWNXlO7wPrKOXbkZowABWG_0QXYRZaOoH8uJ8yYfSeHSBDH43iP95WDG-juZ7uNPY6BMlWikq9s29iYyFoYqdCahf-ZadkC9CtQ0NbDkz188y84aTUJSS0UJdVIOEKq01MfzHGsBKeVGx7x_ANmeFY3bCxTMjGI_Je4zUdvzYKLdvvDp9GN6lOsSsBasUN80lP17iUjjYj87nTAYIsVkcA8cUO-o_J6MDXJ8UriACoZc8obMsUn6bYm8cm0EB1QJCNpVV3vs_Vkl5EdM8sQJqVxLjnZx_YRHRBE2wR1DPTAPyKW25yYcoNkypbkwP-Vgyy9qkXxsiw_MC_W9gnKzMevslJOmgs0-08u-z2qDP5x9uWjPLBByH5nv_cfoPPVhOGIMpcriTlcRtW00)
 ![[diagrama_cu04.png]]
-#### 3.5 Diagrama CU05 – Recargar Saldo
+#### B.3.5. Diagrama CU05 – Recargar Saldo
 [Link](https://www.plantuml.com/plantuml/uml/PLBDZjCm4BxFKunwWiDARDkze5MrosgvWIgYvJwoXs1mx6Zi01NYgVe8VJ4ynec2UeWodk_7yzb-I9aaJuC7pryoveZY-gyPhHCssSK0wRiB8maDI2P7wVB9Cz9FJd5WWDh3pKkQI5pS82LizGmTAP6m9xICH-ehHuk5qBcKUI3iNjuzArYB6VnmETl9H_pu_aan_IywbX_EHb7Znz4xGyPTpa5fPJq2Q08AlMVSb7Np_ms8Ks93gRG_bR_qf0w9l6tpFxrPSphsR8oBWGGpoJVEX2SSOiWp_NPDV_RSEy61hOlgEr8_yxPhtb6YuKHI2MXYmB4TL6Flrkn78yKma_oR4paiisYi9jcl9P_9Eri4DQ5ke6U7h-9Oi_ZNJNC7Vm3QbU7DpQ76Br-hR_4jtj_phyp17WvG6WtOLi05uoVB5TasP7U5x1golqBs3RdxVnlG-sfke6zbMMZQsGqqKDC3F1IflkE_)
 ![[diagrama_cu05.png]]
 
-### 4. Estimación por Puntos de Caso de Uso (UCP)
+### B.4. Estimación por Puntos de Caso de Uso (UCP)
 
 | Complejidad | N° Transacciones | Puntos |
 | ----------- | ---------------- | ------ |
@@ -483,9 +483,9 @@ UCP = UUCP×TCF×EF
 UCP = 72×1.18×0.515
 UCP = 43.74
 
-## 3er Punto - Historias de Usuario
+## C. Historias de Usuario
 
-### HU 1: Registro de Usuario
+### C.1. HU 1: Registro de Usuario
 
 **Título:** Registro de Usuario  
 **Descripción:**  
@@ -506,7 +506,7 @@ iii. Para poder acceder a las funcionalidades de gestión de tarjetas SUBE.
 - No se puede registrar más de una cuenta con el mismo DNI o correo.
 - La activación es obligatoria para poder iniciar sesión.
 
-### HU 2: Asociar Tarjeta SUBE
+### C.2. HU 2: Asociar Tarjeta SUBE
 
 **Título:** Asociar Tarjeta SUBE  
 **Descripción:**  
@@ -526,7 +526,7 @@ iii. Para poder visualizar su saldo y movimientos desde la app.
 - Las tarjetas asociadas se muestran en una lista de gestión personal.
 - El sistema debe consultar la API oficial del sistema SUBE para validar la tarjeta.
 
-### HU 3: Consultar Saldo
+### C.3. HU 3: Consultar Saldo
 
 **Título:** Consultar Saldo  
 **Descripción:**  
@@ -546,7 +546,7 @@ iii. Para saber si necesito realizar una recarga antes de viajar.
 - En caso de múltiples tarjetas, todas deben estar visibles en la interfaz.
 - Puede ofrecerse almacenamiento temporal del último saldo en cache (mejora futura).
 
-### HU 4: Consultar Últimos Movimientos
+### C.4. HU 4: Consultar Últimos Movimientos
 
 **Título:** Consultar Últimos Movimientos  
 **Descripción:**  
@@ -566,7 +566,7 @@ iii. Para poder llevar un control de mis gastos de transporte.
 - El sistema consume esta información desde la API del sistema SUBE.
 - Puede incluirse opción para exportar a PDF o Excel en versiones futuras.
 
-### HU 5: Recargar Saldo
+### C.5. HU 5: Recargar Saldo
 
 **Título:** Recargar Saldo  
 **Descripción:**  
@@ -587,9 +587,9 @@ iii. Para aumentar el saldo de mi tarjeta sin acudir a una terminal física.
 - El sistema debe cumplir con los estándares PCI-DSS para transacciones seguras.
 - Si el dispositivo cuenta con NFC, debe ofrecer la validación inmediata desde el celular.
 
-## 4to Punto - Estimación de Esfuerzo (para cada historia de usuario)
+## D. Estimación de Esfuerzo
 
-### Estimación de Esfuerzo con Planning Poker
+### D.1. Estimación de Esfuerzo con Planning Poker
 
 **HU1 – Registro de Usuario**  
 Cartas elegidas: Ariel (2), Nahuel (2), Dante (2)  
@@ -616,7 +616,7 @@ Cartas elegidas: Ariel (5), Nahuel (5), Dante (8)
 Aunque Dante propuso 8 por la complejidad del NFC y la seguridad de pagos, Ariel y Nahuel sugirieron que 5 es más apropiado para esta release inicial. Se optó por mantener el valor más frecuente para evitar sobreestimar.
 **Resultado:** 5 puntos
 
-### Tabla Final - Estimación de Esfuerzo
+### D.2. Tabla Final - Estimación de Esfuerzo
 
 | Historia de Usuario                 | Esfuerzo Estimado | Complejidad Relativa                                            |
 | ----------------------------------- | ----------------- | --------------------------------------------------------------- |
@@ -625,9 +625,10 @@ Aunque Dante propuso 8 por la complejidad del NFC y la seguridad de pagos, Ariel
 | HU3 – Consultar Saldo               | **1**             | Interacción simple, sin lógica compleja.                        |
 | HU4 – Consultar Últimos Movimientos | **3**             | Listado, filtros, interacción más extensa con API.              |
 | HU5 – Recargar Saldo                | **5**             | Multipasos, integración con pagos, validaciones, NFC. Compleja. |
-## 5to Punto - Diagramas de Pert y Gantt
 
-### 1. Principales Eventos del Proyecto (como lista numerada)
+## E. Diagramas de Pert y Gantt
+
+### E.1. Principales Eventos del Proyecto
 
 1. Relevamiento de requisitos
 2. Diseño de arquitectura del sistema
@@ -639,7 +640,8 @@ Aunque Dante propuso 8 por la complejidad del NFC y la seguridad de pagos, Ariel
 8. Desarrollo: Integración de notificaciones
 9. Pruebas funcionales y de seguridad
 10. Despliegue en entorno productivo
-### 2.  Tabla de Tareas
+
+### E.2. Tabla de Tareas
 
 | N°  | Tarea                                       | Duración (días) | Predecesores |
 | --- | ------------------------------------------- | --------------- | ------------ |
@@ -653,8 +655,9 @@ Aunque Dante propuso 8 por la complejidad del NFC y la seguridad de pagos, Ariel
 | 8   | Desarrollo: Integración de notificaciones   | 2               | 7            |
 | 9   | Pruebas funcionales y de seguridad          | 5               | 7, 8         |
 | 10  | Despliegue en entorno productivo            | 1               | 9            |
-### 3. Diagrama Gantt
+
+### E.3. Diagrama Gantt
 ![[diagrama_gantt.png]]
 
-### 4. Diagrama Pert
+### E.4. Diagrama Pert
 ![[diagrama_pert.drawio.png]]

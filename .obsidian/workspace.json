@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "e21ab78429785b74",
+        "id": "f49231ed08ea49b1",
         "type": "tabs",
         "children": [
           {
-            "id": "867c19b354787532",
+            "id": "9d0a14d3c83ee452",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -112,6 +112,54 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "c48000b30026c126",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "UNLa/TP App Sube - Ing. Soft 2/Trabajo Práctico Grupal - App SUBE.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Trabajo Práctico Grupal - App SUBE"
+            }
+          },
+          {
+            "id": "d25e6ca7554e89ef",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "UNLa/TP App Sube - Ing. Soft 2/Trabajo Práctico Grupal - App SUBE.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Trabajo Práctico Grupal - App SUBE"
+            }
+          },
+          {
+            "id": "b4d41e0d194fbc53",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
           }
         ],
         "currentTab": 1
@@ -133,11 +181,11 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "867c19b354787532",
+  "active": "1289c282bc0393f0",
   "lastOpenFiles": [
+    "UNLa/TP App Sube - Ing. Soft 2/Trabajo Práctico Grupal - App SUBE.md",
     "UNLa/TP App Sube - Ing. Soft 2/diagrama_pert.drawio.png",
     "UNLa/TP App Sube - Ing. Soft 2/diagrama_pert.drawio",
-    "UNLa/TP App Sube - Ing. Soft 2/Trabajo Práctico Grupal - App SUBE.md",
     "UNLa/TP App Sube - Ing. Soft 2/diagrama_cu01.png",
     "UNLa/TP App Sube - Ing. Soft 2",
     "UNLa/TP App Sube - Ing. Soft 2/diagrama_gantt.png",
