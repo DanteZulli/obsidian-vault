@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "aadbde06c7d55939",
@@ -180,7 +179,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1289c282bc0393f0",
+  "active": "0ee388cb23cae64d",
   "lastOpenFiles": [
     "Trabajo práctico Grupal App SUBE.md",
     "Welcome.md"

@@ -1,6 +1,6 @@
 ```table-of-contents
 ```
-## Punto 1 - Definición de Ideas o Requisitos según [el estándar IEEE 830](https://www.fdi.ucm.es/profesor/gmendez/docs/is0809/ieee830.pdf)
+## Punto 1 - Definición de Ideas o Requisitos según el [Estándar IEEE 830](https://www.fdi.ucm.es/profesor/gmendez/docs/is0809/ieee830.pdf)
 
 ### 1. Introducción
 
@@ -157,7 +157,7 @@ La documentación del sistema deberá ser completa y accesible, incluyendo una g
 
 ### 4. Apéndices
 
-#### 4.1. Restricción de Lenguaje de Programación
+**Restricción de Lenguaje de Programación**
 
 Para el desarrollo de la "App SUBE", se establece como una restricción fundamental la utilización de lenguajes de programación y frameworks que soporten la implementación multiplataforma. Esta directriz es esencial para asegurar la compatibilidad del sistema tanto en dispositivos móviles (Android e iOS) como en entornos web modernos, minimizando la duplicación de esfuerzos de desarrollo y facilitando el mantenimiento a largo plazo. 
 
