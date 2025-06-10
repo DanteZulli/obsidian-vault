@@ -1,6 +1,6 @@
 ```table-of-contents
 ```
-## Punto 1 - Definición de Ideas o Requisitos según el [Estándar IEEE 830](https://www.fdi.ucm.es/profesor/gmendez/docs/is0809/ieee830.pdf)
+## 1er Punto - Definición de Ideas o Requisitos según el [Estándar IEEE 830](https://www.fdi.ucm.es/profesor/gmendez/docs/is0809/ieee830.pdf)
 
 ### 1. Introducción
 
@@ -211,3 +211,191 @@ Para el desarrollo de la "App SUBE", se establece como una restricción fundamen
 Por lo tanto, se priorizará el uso de tecnologías que permitan escribir una única base de código que pueda desplegarse eficientemente en todas las plataformas objetivo.
 
 A modo de ejemplo, se recomienda la consideración de lenguajes y entornos como TypeScript con frameworks como React Native o Flutter para el desarrollo de las aplicaciones móviles y web, dada su capacidad para generar código nativo a partir de una única base de código. 
+
+## 2do Punto - Análisis, Definición de Casos de Uso y Estimación por Puntos de Caso de Uso
+
+### 1. Casos de Uso Identificados
+
+En base a los requisitos funcionales (definidos previamente en la ERS del primer punto), identificamos los siguientes 5 casos de uso principales:
+
+#### 1.1 Caso de Uso CU01 – Registro de Usuario
+
+- **Objetivos asociados**:
+    - Permitir que nuevos usuarios accedan al sistema App SUBE.
+    - Gestionar una cuenta personal asociada a una o varias tarjetas SUBE.
+- **Requisitos asociados**:
+    - RF01: El sistema deberá permitir crear una cuenta mediante un formulario de registro.
+    - RF02: El sistema deberá enviar un correo de confirmación al registrar una cuenta.
+- **Descripción**:  
+    Caso de uso **concreto**. Permite a un ciudadano crear una cuenta en la App SUBE ingresando sus datos personales. Incluye validaciones y verificación por correo electrónico.
+- **Precondición**:
+    - El usuario cuenta con acceso a internet.
+    - El usuario no posee una cuenta registrada con ese correo electrónico.
+- **Secuencia normal**:
+    1. El usuario accede a la aplicación y selecciona “Registrarse”.
+    2. El sistema muestra un formulario de registro.
+    3. El usuario completa nombre, DNI, correo electrónico y contraseña.
+    4. El sistema valida los datos ingresados.
+    5. El sistema crea la cuenta en estado “pendiente de verificación”.
+    6. El sistema envía un correo de confirmación con enlace de activación.
+    7. El usuario accede al correo y confirma su cuenta mediante el enlace.
+    8. El sistema activa la cuenta y permite iniciar sesión.
+- **Postcondición**:
+    - El usuario tiene una cuenta activa y puede iniciar sesión en la aplicación.
+- **Excepciones**:
+    - E1: El correo ya está registrado → se muestra mensaje de error.
+    - E2: Error de validación en los datos ingresados → se solicita corrección.
+    - E3: Falla en el envío de correo → se informa y ofrece reintento.
+    - E4: El usuario no confirma el correo → la cuenta permanece inactiva.
+- **Importancia**: Alta
+- **Urgencia**: Alta
+- **Comentarios**:
+    - El correo de confirmación es esencial para evitar registros fraudulentos.
+    - Puede contemplarse en el futuro el registro con autenticación social (Google, Facebook, etc).
+
+#### 1.2 Caso de Uso CU02 – Asociar Tarjeta SUBE
+
+- **Objetivos asociados**:
+    - Permitir al usuario gestionar una o más tarjetas SUBE desde la aplicación.
+- **Requisitos asociados**:
+    - RF03: El sistema deberá permitir asociar una tarjeta SUBE a una cuenta de usuario.
+    - RF04: El sistema deberá verificar la validez de la tarjeta con el sistema central SUBE.
+- **Descripción**:  
+    Caso de uso **concreto**. Permite al usuario registrado vincular una tarjeta SUBE existente a su cuenta para su gestión.
+- **Precondición**:
+    - El usuario ha iniciado sesión en la App SUBE.
+    - El número de tarjeta SUBE ingresado no está previamente asociado a otro usuario.
+- **Secuencia normal**:
+    1. El usuario accede a la sección “Mis tarjetas” y selecciona “Asociar nueva tarjeta”.
+    2. El sistema solicita el número de tarjeta SUBE.
+    3. El usuario ingresa el número y confirma.
+    4. El sistema valida el formato y verifica con la API del sistema SUBE.
+    5. Si es válido, la tarjeta queda asociada a la cuenta del usuario.
+    6. El sistema muestra un mensaje de éxito y la tarjeta aparece en el listado del usuario.
+- **Postcondición**:
+    - La tarjeta queda vinculada a la cuenta del usuario y lista para futuras operaciones.
+- **Excepciones**:
+    - E1: La tarjeta ya está asociada a otra cuenta → se muestra mensaje de error.
+    - E2: El número ingresado es inválido → se solicita corrección.
+    - E3: Error en la API del sistema SUBE → se informa que no se pudo validar en ese momento.
+- **Importancia**: Alta
+- **Urgencia**: Alta
+- **Comentarios**:
+    - Se podría permitir en el futuro agregar un alias a cada tarjeta para facilitar su identificación.
+#### 1.3 Caso de Uso CU03 – Consultar Saldo
+  
+- **Objetivos asociados**:
+    - Permitir al usuario consultar el saldo actual de sus tarjetas SUBE.
+- **Requisitos asociados**:
+    - RF05: El sistema deberá permitir la consulta de saldo en tiempo real.
+    - RF06: El sistema deberá comunicarse con la API del sistema SUBE para obtener esta información.
+- **Descripción**:  
+    Caso de uso **concreto**. Permite visualizar el saldo actualizado de una tarjeta asociada.
+- **Precondición**:
+    - El usuario ha iniciado sesión y tiene al menos una tarjeta asociada.
+    - El sistema SUBE está disponible.
+- **Secuencia normal**:
+    1. El usuario accede al menú de tarjetas asociadas.
+    2. Selecciona una tarjeta.
+    3. El sistema consulta en tiempo real el saldo mediante API al sistema SUBE.
+    4. El sistema muestra el saldo actualizado en pantalla.
+- **Postcondición**:
+    - El usuario visualiza el saldo actualizado de la tarjeta seleccionada.
+- **Excepciones**:
+    - E1: No hay conexión a internet → se informa al usuario.
+    - E2: El sistema SUBE no responde → se notifica y se invita a reintentar.
+- **Importancia**: Alta
+- **Urgencia**: Alta
+- **Comentarios**:
+    - Puede ofrecerse una vista offline con el último saldo consultado si se guarda localmente (mejora futura).
+#### 1.4 Caso de Uso CU04 – Consultar Últimos Movimientos
+
+- **Objetivos asociados**:    
+    - Permitir al usuario visualizar el historial de viajes y recargas realizados con su tarjeta SUBE.
+- **Requisitos asociados**:
+    - RF07: El sistema deberá permitir consultar los movimientos de una tarjeta.
+    - RF08: El sistema deberá mostrar fecha, tipo de movimiento, monto, y otros datos relevantes.
+- **Descripción**:  
+    Caso de uso **concreto**. Muestra al usuario un historial detallado de transacciones (viajes, recargas).
+- **Precondición**:
+    - El usuario ha iniciado sesión y tiene al menos una tarjeta asociada.
+- **Secuencia normal**:
+    1. El usuario accede a la sección “Historial de movimientos”.
+    2. Selecciona una tarjeta de la lista.
+    3. El sistema realiza una consulta al sistema SUBE para obtener el historial.
+    4. El sistema muestra una lista cronológica de movimientos con detalles por fila (tipo, monto, fecha).
+- **Postcondición**:
+    - El usuario visualiza correctamente el historial de operaciones de la tarjeta.
+- **Excepciones**:
+    - E1: El sistema SUBE no responde → se informa al usuario.
+    - E2: No hay movimientos disponibles → se muestra mensaje informativo.
+- **Importancia**: Media
+- **Urgencia**: Alta
+- **Comentarios**:
+    - Podría agregarse una opción para exportar el historial como PDF o Excel en futuras versiones.
+
+---
+
+### Caso de Uso CU05 – Recargar Saldo
+
+- **Objetivos asociados**:    
+    - Permitir que el usuario recargue virtualmente su tarjeta SUBE.
+- **Requisitos asociados**:
+    - RF09: El sistema deberá permitir recargas usando diversos medios de pago.
+    - RF10: El sistema deberá integrar pasarelas de pago y soporte NFC para acreditar la carga.
+- **Descripción**:  
+    Caso de uso **concreto**. Permite seleccionar un medio de pago, realizar la recarga y acreditarla en la tarjeta.
+- **Precondición**:
+    - El usuario ha iniciado sesión.
+    - Tiene al menos una tarjeta asociada.
+    - Dispone de conexión a internet.
+- **Secuencia normal**:
+    1. El usuario accede a la sección “Recargar”.
+    2. Selecciona una tarjeta.
+    3. Ingresa el monto deseado.
+    4. Elige el medio de pago (tarjeta, billetera virtual).
+    5. El sistema redirige o comunica con la pasarela de pago correspondiente.
+    6. El usuario completa los datos de pago y confirma.
+    7. El sistema recibe confirmación del pago.
+    8. Se muestra mensaje de éxito.
+    9. Si el usuario tiene NFC disponible, se le solicita acercar la tarjeta para acreditación.
+- **Postcondición**:
+    - La tarjeta ha sido recargada y la operación ha sido confirmada.
+- **Excepciones**:
+    - E1: Pago rechazado por la pasarela → se informa y se ofrece reintento.
+    - E2: Error de conexión con la pasarela → se informa y se sugiere volver a intentar.
+    - E3: Falla en la acreditación NFC → se sugiere acudir a una terminal SUBE o reintentar.
+- **Importancia**: Crítica
+- **Urgencia**: Alta
+- **Comentarios**:
+    - Es uno de los pilares de valor agregado frente a las terminales físicas.
+    - Debe contemplar múltiples pasarelas de pago para disponibilidad constante.
+### 2. Actores y Acciones Involucradas (en cada caso de uso)
+
+| Caso de Uso               | Actores Involucrados                                                        | Acciones del Actor                                                                                                                                                                                                                                                                                                                                                        |
+| ------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Registro de Usuario**   | Usuario, Servidor de Aplicación, Servidor de Correo                         | - **Usuario**: Completa formulario con datos personales (nombre, DNI, correo, contraseña).<br>- **Servidor de Aplicación**: Valida datos, registra al usuario en base de datos.<br>- **Servidor de Correo**: Envía mail de confirmación con enlace de activación.                                                                                                         |
+| **Asociar Tarjeta SUBE**  | Usuario, Sistema SUBE, Servidor de Aplicación                               | - **Usuario**: Ingresa número de tarjeta SUBE desde su perfil.<br>- **Servidor de Aplicación**: Valida formato del número, verifica si ya está asociada.<br>- **Sistema SUBE**: Confirma autenticidad de la tarjeta y permite asociación.                                                                                                                                 |
+| **Consultar Saldo**       | Usuario, Sistema SUBE, Servidor de Aplicación                               | - **Usuario**: Selecciona una tarjeta y solicita ver el saldo actual.<br>- **Servidor de Aplicación**: Envía solicitud de consulta a Sistema SUBE.<br>- **Sistema SUBE**: Devuelve el saldo actualizado de la tarjeta.<br>- **Servidor de Aplicación**: Presenta el resultado al usuario.                                                                                 |
+| **Consultar Movimientos** | Usuario, Sistema SUBE, Servidor de Aplicación                               | - **Usuario**: Selecciona una tarjeta y solicita historial.<br>- **Servidor de Aplicación**: Solicita movimientos a Sistema SUBE.<br>- **Sistema SUBE**: Responde con historial (viajes, recargas).<br>- **Servidor de Aplicación**: Muestra los datos en la interfaz.                                                                                                    |
+| **Recargar Saldo**        | Usuario, Pasarela de Pago, Sistema SUBE, Servidor de Aplicación, Módulo NFC | - **Usuario**: Elige tarjeta, monto y medio de pago, confirma.<br>- **Servidor de Aplicación**: Inicia transacción, coordina con pasarela de pago.<br>- **Pasarela de Pago**: Procesa el pago (tarjeta, billetera, etc).<br>- **Sistema SUBE**: Acredita saldo.<br>- **Módulo NFC**: En caso de ser requerido, permite validar la carga acercando la tarjeta al teléfono. |
+### 3. Diagramas de Casos de Uso
+
+> **Nota:** Todos los diagramas fueron elaborados utilizando [PlantUML](https://www.plantuml.com). En caso de que las imágenes no se puedan ver con claridad, se adjunta el enlace a la página con la definición completa del diagrama.
+
+#### 3.1 Diagrama CU01 – Registro de Usuario 
+[Link](https://www.plantuml.com/plantuml/uml/RP5FQlCm4CNtEiNWVU3BdzL724b3wBuXtG_In1qgIsP6JbjAJzKZz6AL7GL4suNXpRpV4q_oLXDA6ZflF9qJf0Z2xLC2nq8sSGn6dpdqADW1sXJbcDuy0RwGnewCcNRGd7H0uTW0AXHziuua5tPPEO9z5A69Al8lQDTxjcZvwpECP9vxOyOs65fFqEGPZgUxGmFl1c1GigXvVK-QninuX1qe9BossV-hgGTgMPEWQAPYXZ55XPv4Oq1FMZBpElE8dXrAOJcqGeektjX5pHx2XJFQ8VkfI0ndbkvwcy8lQtvd4rzGIkCSqPoYuD5ImLVcmvZofZ2RRQORvQ_eEVo7zPfU4mMtsPYyACPYCZXOFpYQd4Lnbh-SPN5MFnnp_Kktd1cVlfnUwNg_ggjEyvQ26ph_3G00)
+![[diagrama_cu01.png]]
+#### 3.2 Diagrama CU02 – Asociar Tarjeta SUBE
+[Link](https://www.plantuml.com/plantuml/uml/RP9DR_8m383l_XKMTwGNokaLGh1fcdP6x6wbXdbh4-Iux6FQhzfjL_xOaYwWxkDGoVRps8sZBAEHMjSsqF3Mq0AgxEuCQr5s9i53V12_9wKMoLdGjJqtZFJ8CRGCqDTmj8aTgOGHKiGIdz1Qed5BkDvSNFKy1sV8Uf0wHJNZQj-88oV7Tv-zbEy1yYd8xnh6KShBa5T0x28xYgbypT5oJnvXfFTi5B_ESVblwDtudN8aHN_yQ5d3m2_wPAZVKYDrihT1Mx8_xEatcrMsuf9_o7tyWkmn3ZOlJTMmQHM34zBJN2Hq7Vlp3sRm1b0k4yVZHRzG-aeymVyud_EJiQyN2qY50gOz4E-QhkQUJ0kfVf6gaDaF0lcooxX1N47UvPGCm0nWoRxEx-WJ)
+![[diagrama_cu02.png]]
+#### 3.3 Diagrama CU03 – Consultar Saldo
+[Link](https://www.plantuml.com/plantuml/uml/RP7TIaCn3CVlynHXzmEttSaOcyCBBmJXi0S8RPpLddOaENueFfMFu8lP7kiSuaNXd_poyITTgv7Oq4U8V6je6INixmnz47OMSW9z2Eb0GZsIiooTlKH6UcBDFGECEPpiT209UOAasFGFwe8QzuJTxk9ov5KS8SjZy4LvniqX1aSkV7waMbVY0q1rGMaV6ISbRaFU075GTgGblSr9XsXKHoX5tqnipqwBEexiNCY918taderQsUo_MOARcolq755FtBUE-Md7TLOJak_DzK83nV1AHnSBU0Te5y7fT3KQAw_f6PxZSidFniclLb0I3Sn749ABW-UHp1jP_25GxzAQeDey1hzW0R0k6-etVm40)
+![[diagrama_cu03.png]]
+#### 3.4 Diagrama CU04 – Consultar Últimos Movimientos
+[Link](https://www.plantuml.com/plantuml/uml/RP9DRXin38NtEWNXlO7wPrKOXbkZowABWG_0QXYRZaOoH8uJ8yYfSeHSBDH43iP95WDG-juZ7uNPY6BMlWikq9s29iYyFoYqdCahf-ZadkC9CtQ0NbDkz188y84aTUJSS0UJdVIOEKq01MfzHGsBKeVGx7x_ANmeFY3bCxTMjGI_Je4zUdvzYKLdvvDp9GN6lOsSsBasUN80lP17iUjjYj87nTAYIsVkcA8cUO-o_J6MDXJ8UriACoZc8obMsUn6bYm8cm0EB1QJCNpVV3vs_Vkl5EdM8sQJqVxLjnZx_YRHRBE2wR1DPTAPyKW25yYcoNkypbkwP-Vgyy9qkXxsiw_MC_W9gnKzMevslJOmgs0-08u-z2qDP5x9uWjPLBByH5nv_cfoPPVhOGIMpcriTlcRtW00)
+![[diagrama_cu04.png]]
+#### 3.5 Diagrama CU05 – Recargar Saldo
+[Link](https://www.plantuml.com/plantuml/uml/PLBDZjCm4BxFKunwWiDARDkze5MrosgvWIgYvJwoXs1mx6Zi01NYgVe8VJ4ynec2UeWodk_7yzb-I9aaJuC7pryoveZY-gyPhHCssSK0wRiB8maDI2P7wVB9Cz9FJd5WWDh3pKkQI5pS82LizGmTAP6m9xICH-ehHuk5qBcKUI3iNjuzArYB6VnmETl9H_pu_aan_IywbX_EHb7Znz4xGyPTpa5fPJq2Q08AlMVSb7Np_ms8Ks93gRG_bR_qf0w9l6tpFxrPSphsR8oBWGGpoJVEX2SSOiWp_NPDV_RSEy61hOlgEr8_yxPhtb6YuKHI2MXYmB4TL6Flrkn78yKma_oR4paiisYi9jcl9P_9Eri4DQ5ke6U7h-9Oi_ZNJNC7Vm3QbU7DpQ76Br-hR_4jtj_phyp17WvG6WtOLi05uoVB5TasP7U5x1golqBs3RdxVnlG-sfke6zbMMZQsGqqKDC3F1IflkE_)
+![[diagrama_cu05.png]]
+
