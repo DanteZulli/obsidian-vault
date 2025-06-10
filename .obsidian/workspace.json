@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "dd766b5c5a578097",
+        "id": "8fce893c4edd37a5",
         "type": "tabs",
         "children": [
           {
-            "id": "f94a638cae44f857",
+            "id": "28a1c748ae70be8c",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -108,7 +108,8 @@
               "title": "Source Control"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -127,7 +128,7 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "f94a638cae44f857",
+  "active": "28a1c748ae70be8c",
   "lastOpenFiles": [
     "UNLa/TP App Sube - Ing. Soft 2/diagrama_pert.drawio.png",
     "UNLa/TP App Sube - Ing. Soft 2/Trabajo Práctico Grupal - App SUBE.md",
