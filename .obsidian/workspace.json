@@ -1,0 +1,176 @@
+{
+  "main": {
+    "id": "ff878799b509d8bd",
+    "type": "split",
+    "children": [
+      {
+        "id": "caf1bf022b218875",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0ee388cb23cae64d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Trabajo práctico Grupal App SUBE.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Trabajo práctico Grupal App SUBE"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "df9817cb8c615b72",
+    "type": "split",
+    "children": [
+      {
+        "id": "fd41804711e3a73c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "91846bee249ba6e5",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "70e2178fc68af80b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "e7ca2bf91a865516",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "aadbde06c7d55939",
+    "type": "split",
+    "children": [
+      {
+        "id": "b275ce0b4c5cb891",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c498ea3101cafa86",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Trabajo práctico Grupal App SUBE.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Trabajo práctico Grupal App SUBE"
+            }
+          },
+          {
+            "id": "3089d6a96b27404e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Trabajo práctico Grupal App SUBE.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Trabajo práctico Grupal App SUBE"
+            }
+          },
+          {
+            "id": "d87f33282cb240e8",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "df485e8f49f15a2f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Trabajo práctico Grupal App SUBE.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Trabajo práctico Grupal App SUBE"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "0ee388cb23cae64d",
+  "lastOpenFiles": [
+    "Trabajo práctico Grupal App SUBE.md",
+    "Welcome.md"
+  ]
+}
