@@ -399,3 +399,87 @@ En base a los requisitos funcionales (definidos previamente en la ERS del primer
 [Link](https://www.plantuml.com/plantuml/uml/PLBDZjCm4BxFKunwWiDARDkze5MrosgvWIgYvJwoXs1mx6Zi01NYgVe8VJ4ynec2UeWodk_7yzb-I9aaJuC7pryoveZY-gyPhHCssSK0wRiB8maDI2P7wVB9Cz9FJd5WWDh3pKkQI5pS82LizGmTAP6m9xICH-ehHuk5qBcKUI3iNjuzArYB6VnmETl9H_pu_aan_IywbX_EHb7Znz4xGyPTpa5fPJq2Q08AlMVSb7Np_ms8Ks93gRG_bR_qf0w9l6tpFxrPSphsR8oBWGGpoJVEX2SSOiWp_NPDV_RSEy61hOlgEr8_yxPhtb6YuKHI2MXYmB4TL6Flrkn78yKma_oR4paiisYi9jcl9P_9Eri4DQ5ke6U7h-9Oi_ZNJNC7Vm3QbU7DpQ76Br-hR_4jtj_phyp17WvG6WtOLi05uoVB5TasP7U5x1golqBs3RdxVnlG-sfke6zbMMZQsGqqKDC3F1IflkE_)
 ![[diagrama_cu05.png]]
 
+### 4. Estimación por Puntos de Caso de Uso (UCP)
+
+| Complejidad | N° Transacciones | Puntos |
+| ----------- | ---------------- | ------ |
+| Simple      | <=3              | 5      |
+| Promedio    | 4 a 7            | 10     |
+| Complejo    | > 7              | 15     |
+#### Paso 1: Calcular Puntos de Caso de Uso No Ajustados (UUCP)
+**1.1 Clasificación y peso de los Casos de Uso**
+
+| Caso de Uso                  | N° Transacciones | Clasificación | Peso |
+| ---------------------------- | ---------------- | ------------- | ---- |
+| CU01 – Registro de Usuario   | 8                | Complejo      | 15   |
+| CU02 – Asociar Tarjeta SUBE  | 6                | Promedio      | 10   |
+| CU03 – Consultar Saldo       | 4                | Promedio      | 10   |
+| CU04 – Consultar Movimientos | 5                | Promedio      | 10   |
+| CU05 – Recargar Saldo        | 9                | Complejo      | 15   |
+**Total UUCW = 15 + 10 + 10 + 10 + 15 = 60**
+
+ **1.2 Clasificación y peso de los Actores**
+ 
+|Actor|Tipo de Interfaz|Clasificación|Peso|
+|---|---|---|---|
+|Usuario|GUI|Complejo|3|
+|Servidor de Aplicación|API o sistema interno|Promedio|2|
+|Servidor de Correo|Sistema externo (estándar)|Simple|1|
+|Sistema SUBE|API externa|Promedio|2|
+|Pasarela de Pago|API externa|Promedio|2|
+|Módulo NFC|Dispositivo físico/sensor|Promedio|2|
+**Total UAW = 3 + 2 + 1 + 2 + 2 + 2 = 12**
+
+**1.3 Puntos de Caso de Uso No Ajustados (UUCP)**
+UUCP = UUCW+UAW
+UUCP = 60+12
+UUCP = 72
+
+#### Paso 2: Ajuste por Complejidad Técnica (TCF)
+
+13 factores técnicos, valorados de 0 a 5. Valoramos razonablemente según el sistema SUBE y una app móvil/financiera moderna:
+
+|#|Factor Técnico|Peso|Valoración|Impacto|
+|---|---|---|---|---|
+|1|Sistema distribuido|2|4|8|
+|2|Tiempo de respuesta / rendimiento|1|4|4|
+|3|Alta eficiencia requerida|1|3|3|
+|4|Procesamiento interno complejo|1|2|2|
+|5|Reusabilidad del código|1|3|3|
+|6|Instalaciones fáciles|0.5|2|1|
+|7|Portabilidad|2|4|8|
+|8|Uso intensivo de la interfaz|1|5|5|
+|9|Componentes de entrada complejos|0.5|2|1|
+|10|Uso de archivos internos|1|1|1|
+|11|Seguridad|1|5|5|
+|12|Acceso directo de terceros a interfaces|1|3|3|
+|13|Capacidades especiales (NFC)|1|4|4|
+**TFactor = Suma Impacto = 58**
+TCF = 0.6+(0.01×58)
+TCF = 0.6+0.58
+TCF = 1.18
+
+#### Paso 3: Ajuste por Complejidad Ambiental (EF)
+8 factores ambientales, valorados de 0 a 5. Evaluamos según un equipo universitario con experiencia moderada y proyecto bien definido.
+
+| #   | Factor Ambiental                               | Peso | Valoración | Impacto |
+| --- | ---------------------------------------------- | ---- | ---------- | ------- |
+| 1   | Familiaridad con el proceso de desarrollo      | 1.5  | 3          | 4.5     |
+| 2   | Experiencia con aplicación similar             | 0.5  | 3          | 1.5     |
+| 3   | Experiencia con la plataforma                  | 1    | 3          | 3       |
+| 4   | Motivación del equipo                          | 1    | 5          | 5       |
+| 5   | Estabilidad de requisitos                      | 2    | 4          | 8       |
+| 6   | Parte del equipo está capacitada               | 1    | 4          | 4       |
+| 7   | Dificultad técnica del lenguaje                | 0.5  | 3          | 1.5     |
+| 8   | Disponibilidad de entornos de prueba adecuados | 1    | 2          | 2       |
+**EFactor = 4.5 + 1.5 + 3 + 5 + 8 + 4 + 1.5 + 2 = 29.5**
+EF = 1.4+(−0.03×EFactor)
+EF = 1.4−0.03×29.5
+EF = 1.4−0.885
+EF = 0.515​
+
+#### Paso 4: Cálculo Final de Puntos de Caso de Uso Ajustados (UCP)
+UCP = UUCP×TCF×EF
+UCP = 72×1.18×0.515
+UCP = 43.74
+
