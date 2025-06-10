@@ -282,6 +282,7 @@ En base a los requisitos funcionales (definidos previamente en la ERS del primer
 - **Urgencia**: Alta
 - **Comentarios**:
     - Se podría permitir en el futuro agregar un alias a cada tarjeta para facilitar su identificación.
+
 #### 1.3 Caso de Uso CU03 – Consultar Saldo
   
 - **Objetivos asociados**:
@@ -308,6 +309,7 @@ En base a los requisitos funcionales (definidos previamente en la ERS del primer
 - **Urgencia**: Alta
 - **Comentarios**:
     - Puede ofrecerse una vista offline con el último saldo consultado si se guarda localmente (mejora futura).
+
 #### 1.4 Caso de Uso CU04 – Consultar Últimos Movimientos
 
 - **Objetivos asociados**:    
@@ -334,9 +336,7 @@ En base a los requisitos funcionales (definidos previamente en la ERS del primer
 - **Comentarios**:
     - Podría agregarse una opción para exportar el historial como PDF o Excel en futuras versiones.
 
----
-
-### Caso de Uso CU05 – Recargar Saldo
+#### 1.5 Caso de Uso CU05 – Recargar Saldo
 
 - **Objetivos asociados**:    
     - Permitir que el usuario recargue virtualmente su tarjeta SUBE.
