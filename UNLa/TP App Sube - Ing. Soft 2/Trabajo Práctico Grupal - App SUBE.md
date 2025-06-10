@@ -625,3 +625,36 @@ Aunque Dante propuso 8 por la complejidad del NFC y la seguridad de pagos, Ariel
 | HU3 – Consultar Saldo               | **1**             | Interacción simple, sin lógica compleja.                        |
 | HU4 – Consultar Últimos Movimientos | **3**             | Listado, filtros, interacción más extensa con API.              |
 | HU5 – Recargar Saldo                | **5**             | Multipasos, integración con pagos, validaciones, NFC. Compleja. |
+## 5to Punto - Diagramas de Pert y Gantt
+
+### 1. Principales Eventos del Proyecto (como lista numerada)
+
+1. Relevamiento de requisitos
+2. Diseño de arquitectura del sistema
+3. Diseño de interfaz de usuario (UX)
+4. Desarrollo: Registro de usuario
+5. Desarrollo: Asociación de tarjeta
+6. Desarrollo: Consulta de saldo y movimientos
+7. Desarrollo: Recarga de saldo
+8. Desarrollo: Integración de notificaciones
+9. Pruebas funcionales y de seguridad
+10. Despliegue en entorno productivo
+### 2.  Tabla de Tareas
+
+| N°  | Tarea                                       | Duración (días) | Predecesores |
+| --- | ------------------------------------------- | --------------- | ------------ |
+| 1   | Relevamiento de requisitos                  | 3               | -            |
+| 2   | Diseño de arquitectura del sistema          | 2               | 1            |
+| 3   | Diseño de interfaz de usuario (UX)          | 3               | 1            |
+| 4   | Desarrollo: Registro de usuario             | 4               | 2, 3         |
+| 5   | Desarrollo: Asociación de tarjeta           | 4               | 2, 3         |
+| 6   | Desarrollo: Consulta de saldo y movimientos | 4               | 2, 3         |
+| 7   | Desarrollo: Recarga de saldo                | 5               | 5, 6         |
+| 8   | Desarrollo: Integración de notificaciones   | 2               | 7            |
+| 9   | Pruebas funcionales y de seguridad          | 5               | 7, 8         |
+| 10  | Despliegue en entorno productivo            | 1               | 9            |
+### 3. Diagrama Gantt
+![[diagrama_gantt.png]]
+
+### 4. Diagrama Pert
+![[diagrama_pert.drawio.png]]
