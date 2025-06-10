@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "caf1bf022b218875",
+        "id": "61b1acfa3fa21da5",
         "type": "tabs",
         "children": [
           {
-            "id": "0ee388cb23cae64d",
+            "id": "5721dba5fe5ec993",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Trabajo práctico Grupal App SUBE.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Trabajo práctico Grupal App SUBE"
+              "title": "New tab"
             }
           }
         ]
@@ -179,9 +175,35 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0ee388cb23cae64d",
+  "active": "91846bee249ba6e5",
   "lastOpenFiles": [
-    "Trabajo práctico Grupal App SUBE.md",
+    "Provincia Seguros/DevOps/Proceso de delivery (Punta a Punta) - Esquema Base Spring Boot REST API (JAR).md",
+    "Provincia Seguros/DevOps/Azure DevOps - CI CD con Azure Pipelines.md",
+    "Provincia Seguros/DevOps/pipeline_ci.png",
+    "Provincia Seguros/DevOps/pipeline_cd.png",
+    "Provincia Seguros/APICOM (Port de Notas rápidas).md",
+    "Provincia Seguros/Guía de Buenas Prácticas para el Desarrollo en Java Spring Boot.md",
+    "UNLa/Trabajo práctico Grupal App SUBE.md",
+    "pipeline_ci.png",
+    "pipeline_cd.png",
+    "Provincia Seguros/SWAGGER/Swagger Logo.png",
+    "Provincia Seguros/SWAGGER/Swagger Example.png",
+    "Provincia Seguros/SWAGGER/SWAGGER.md",
+    "Provincia Seguros/SWAGGER/LIFECYCLE API.png",
+    "Provincia Seguros/REST API/URI URN Y URL DIAGRAMA.png",
+    "Provincia Seguros/REST API/REST API.md",
+    "Provincia Seguros/REST API/REST API Model.png",
+    "Provincia Seguros/REST API/Otro diagrama de URL URI Y URN.png",
+    "Provincia Seguros/DevOps/Kubernetes (Documentación practicas con K0s).md",
+    "Provincia Seguros/DevOps/Gestión de un Registry Privado en Docker.md",
+    "Provincia Seguros/DevOps/Docker (Documentación Minimalista - Bases).md",
+    "Provincia Seguros/DevOps/Azure DevOps - Otros conceptos claves.md",
+    "Provincia Seguros/SWAGGER",
+    "Provincia Seguros/REST API",
+    "Provincia Seguros/Playwright.md",
+    "Provincia Seguros/DevOps",
+    "Provincia Seguros",
+    "UNLa",
     "Welcome.md"
   ]
 }
