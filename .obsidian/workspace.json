@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "8fce893c4edd37a5",
+        "id": "e21ab78429785b74",
         "type": "tabs",
         "children": [
           {
-            "id": "28a1c748ae70be8c",
+            "id": "867c19b354787532",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "UNLa/TP App Sube - Ing. Soft 2/Trabajo Práctico Grupal - App SUBE.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Trabajo Práctico Grupal - App SUBE"
             }
           }
         ]
@@ -90,12 +94,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "UNLa/TP App Sube - Ing. Soft 2/Trabajo Práctico Grupal - App SUBE.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Trabajo Práctico Grupal - App SUBE"
             }
           },
           {
@@ -128,11 +133,11 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "28a1c748ae70be8c",
+  "active": "867c19b354787532",
   "lastOpenFiles": [
     "UNLa/TP App Sube - Ing. Soft 2/diagrama_pert.drawio.png",
-    "UNLa/TP App Sube - Ing. Soft 2/Trabajo Práctico Grupal - App SUBE.md",
     "UNLa/TP App Sube - Ing. Soft 2/diagrama_pert.drawio",
+    "UNLa/TP App Sube - Ing. Soft 2/Trabajo Práctico Grupal - App SUBE.md",
     "UNLa/TP App Sube - Ing. Soft 2/diagrama_cu01.png",
     "UNLa/TP App Sube - Ing. Soft 2",
     "UNLa/TP App Sube - Ing. Soft 2/diagrama_gantt.png",
