@@ -22,11 +22,19 @@ El objetivo principal es brindar una herramienta ágil y centralizada para la ge
 
 #### 1.3 Definiciones, Acrónimos y Abreviaturas
 
-En esta subsección se definirán todos los términos, acrónimos y abreviaturas utilizadas en la ERS. Esta sección se completará y actualizará a medida que se incorporen nuevos términos específicos al sistema o al dominio.
+En esta subsección se definirán todos los términos, acrónimos y abreviaturas utilizadas en la ERS.
 
 - **SUBE / Tarjeta SUBE / Sistema Único de Boleto Electrónico:** Sistema de pago electrónico implementado en Argentina en 2009 para el transporte público. Funciona en colectivos, trenes, subtes, metrotranvías, trolebuses y lanchas, y es utilizado por millones de personas en diversas localidades del país.
   
 - **NFC (Near Field Communication):** Tecnología de comunicación inalámbrica de corto alcance que permite el intercambio de datos entre dispositivos cuando están muy cerca el uno del otro. En el contexto de la App SUBE, se refiere a la funcionalidad de dispositivos móviles (teléfonos) que permite validar y acreditar cargas directamente en la tarjeta SUBE sin necesidad de una terminal física.
+
+- **ERS (Especificación de Requisitos de Software):** Documento formal que describe detalladamente los requisitos funcionales y no funcionales de un sistema de software, siguiendo el estándar IEEE 830.
+
+- **API (Application Programming Interface):** Conjunto de definiciones y protocolos que permiten la comunicación entre diferentes componentes de software. En el contexto de la App SUBE, se refiere a las interfaces proporcionadas por el sistema SUBE para acceder a sus funcionalidades.
+
+- **HTTPS/TLS 1.2:** Protocolo de seguridad que proporciona comunicación cifrada entre el cliente y el servidor. HTTPS es la versión segura de HTTP, y TLS 1.2 es la versión específica del protocolo de seguridad utilizada.
+
+- **WebSockets:** Protocolo de comunicación que proporciona un canal de comunicación bidireccional y persistente entre el cliente y el servidor, permitiendo actualizaciones en tiempo real.
 
 #### 1.4 Referencias
 
@@ -42,7 +50,7 @@ Este documento de Especificación de Requisitos Software (ERS) está estructurad
 
 #### 2.1 Perspectiva del Producto
 
-La "App SUBE" se concibe como un complemento al ecosistema existente del Sistema Único de Boleto Electrónico (SUBE) en Argentina. No es un sistema independiente, sino que depende directamente de las APIs expuestas por los propietarios originales del sistema SUBE. A través de estas APIs, la aplicación podrá consultar y registrar información esencial para el usuario, como los viajes realizados, las cargas efectuadas y otros movimientos de la tarjeta.
+La "App SUBE" se concibe como un complemento al ecosistema existente del Sistema Único de Boleto Electrónico (SUBE) en Argentina. No es un sistema independiente, sino que depende directamente de las APIs expuestas por el gobierno de la nación (los propietarios originales del sistema SUBE). A través de estas APIs, la aplicación podrá consultar y registrar información esencial para el usuario, como los viajes realizados, las cargas efectuadas y otros movimientos de la tarjeta.
 
 El sistema también interactuará con las distintas plataformas de verificación de cobros y pagos, integrándose con servicios de terceros como procesadores de tarjetas de crédito, débito y billeteras virtuales. Esto permitirá la realización de recargas virtuales y la gestión de transacciones desde la aplicación misma.
 
@@ -81,10 +89,6 @@ El desarrollo de la "App SUBE" estará condicionado por las siguientes restricci
 - Restricciones impuestas por las capacidades del hardware móvil (especialmente en relación a la tecnología NFC)
 - Requisitos de accesibilidad multiplataforma para distintos dispositivos
 
-**Consideraciones de Seguridad:**
-- Tratamiento especial de información personal y datos sensibles de carácter transaccional
-- Implementación de protocolos de comunicación seguros para transacciones financieras
-
 **Criticalidad:**
 - El sistema debe mantener altos estándares de disponibilidad y confiabilidad debido a su uso en el transporte público
 
@@ -118,7 +122,7 @@ Estas funcionalidades futuras serán evaluadas y priorizadas en función de la e
 
 #### 3.1 Interfaces Externas
 
-La aplicación deberá proporcionar una interfaz gráfica intuitiva y accesible que siga las guías de diseño establecidas para cada plataforma (Material Design para Android y Human Interface Guidelines para iOS). La interfaz debe ser compatible con tecnologías de asistencia.
+La aplicación deberá proporcionar una interfaz gráfica intuitiva y accesible que siga las guías de diseño establecidas para cada plataforma. La interfaz debe ser compatible con tecnologías de asistencia y proporcionar una experiencia de usuario consistente y predecible.
 
 En cuanto a las interfaces con otros sistemas, la aplicación se integrará con el sistema central de SUBE mediante APIs REST, permitiendo la sincronización de datos y operaciones. También se establecerán conexiones con pasarelas de pago como Mercado Pago, Ualá, etc. y se integrarán servicios de geolocalización como Google Maps para el mapa de terminales. Para mantener a los usuarios informados, se implementará un sistema de notificaciones push.
 
@@ -126,11 +130,54 @@ Las comunicaciones del sistema deberán realizarse de manera segura utilizando H
 
 #### 3.2 Funciones
 
-El sistema permitirá a los usuarios registrarse ingresando información personal como nombre, DNI, correo electrónico y una contraseña segura. Una vez registrado, el usuario podrá asociar una o más tarjetas SUBE a su cuenta, ingresando el número correspondiente a cada una. A través de la interfaz, el usuario podrá consultar el saldo disponible en tiempo real de cada tarjeta asociada y acceder al historial de movimientos, incluyendo viajes realizados y recargas efectuadas.
+Esta subsección detalla las funcionalidades que el sistema "App SUBE" deberá ofrecer a los usuarios, organizadas principalmente por **objetivos** que el sistema persigue y, cuando aplica, por **tipo de usuario** para detallar las funcionalidades específicas que le conciernen. Esta organización permite una comprensión clara de los servicios que el sistema provee y cómo cada grupo de usuarios interactúa con ellos.
 
-El sistema también habilitará la posibilidad de realizar recargas virtuales mediante distintos medios de pago digitales (como tarjetas de crédito, débito o billeteras virtuales). Además, se enviarán notificaciones automáticas al usuario ante eventos como la confirmación de recargas, asociación de nuevas tarjetas o cuando el saldo sea inferior a un umbral configurable.
+##### 3.2.1 Por Objetivos
 
-La aplicación permitirá gestionar múltiples tarjetas desde una misma cuenta, facilitando el control de tarjetas de familiares u otras personas autorizadas por el usuario.
+Las funciones del sistema se agrupan según los principales objetivos que la "App SUBE" busca cumplir para el usuario:
+
+- **Objetivo 1: Gestión de Cuentas y Tarjetas**
+    
+    - **Registro de Usuarios:** El sistema deberá permitir a un **nuevo usuario** crear una cuenta en la aplicación. Esto incluye la recolección de información personal esencial como nombre completo, DNI, dirección de correo electrónico y la creación de una contraseña segura.
+    - **Asociación de Tarjetas SUBE:** El sistema deberá permitir al **usuario registrado** asociar una o más tarjetas SUBE a su cuenta personal. Esto se realizará mediante el ingreso del número de identificación de la tarjeta, lo que habilitará su gestión centralizada desde la aplicación.
+    - **Gestión de Múltiples Tarjetas:** El sistema deberá permitir al **usuario registrado** administrar múltiples tarjetas SUBE asociadas a su cuenta. Esto incluye la visualización de un listado de todas las tarjetas vinculadas y la selección de cada una para acceder a sus detalles y operaciones.
+- **Objetivo 2: Consulta de Información de Tarjeta**
+    
+    - **Consulta de Saldo en Tiempo Real:** El sistema deberá permitir al **usuario registrado** consultar el saldo disponible en tiempo real de cada tarjeta SUBE asociada a su cuenta.
+    - **Visualización de Historial de Movimientos:** El sistema deberá permitir al **usuario registrado** acceder a un historial detallado de todos los movimientos de cada tarjeta asociada, incluyendo:
+        - **Viajes realizados:** Fecha, hora, línea de transporte, monto del viaje.
+        - **Recargas efectuadas:** Fecha, hora, monto recargado, medio de pago utilizado.
+- **Objetivo 3: Realización de Recargas Virtuales**
+    
+    - **Inicio de Recarga:** El sistema deberá permitir al **usuario registrado** iniciar el proceso de recarga de saldo para cualquiera de sus tarjetas SUBE asociadas.
+    - **Selección de Medio de Pago:** El sistema deberá ofrecer al **usuario registrado** diversas opciones de medios de pago digitales para la recarga, incluyendo tarjetas de crédito, tarjetas de débito y billeteras virtuales.
+    - **Acreditación de Recarga vía NFC:** El sistema deberá permitir al **usuario registrado** acreditar la recarga de saldo directamente en la tarjeta SUBE física utilizando la tecnología NFC de su dispositivo móvil.
+    - **Confirmación de Transacción:** El sistema deberá proporcionar al **usuario registrado** una confirmación visual y por notificación de la finalización exitosa de la recarga.
+- **Objetivo 4: Recepción de Alertas y Notificaciones**
+    
+    - **Notificación de Confirmación de Recarga:** El sistema deberá enviar notificaciones automáticas al **usuario registrado** tras la confirmación exitosa de una recarga de saldo.
+    - **Notificación de Saldo Bajo:** El sistema deberá enviar notificaciones automáticas al **usuario registrado** cuando el saldo de una tarjeta asociada sea inferior a un umbral predefinido (configurable por el usuario).
+    - **Notificación de Asociación de Nueva Tarjeta:** El sistema deberá notificar al **usuario registrado** cuando una nueva tarjeta SUBE haya sido asociada exitosamente a su cuenta.
+- **Objetivo 5: Localización de Puntos de Interés**
+    
+    - **Localización de Terminales Físicas de Validación:** El sistema deberá permitir al **usuario registrado** localizar en un mapa las terminales físicas de validación de carga y recarga de SUBE más cercanas a su ubicación actual o a una ubicación específica.
+
+##### 3.2.2 Por Tipo de Usuario
+
+Para el sistema "App SUBE", se identifica un único tipo principal de usuario: el **Usuario Final del Transporte Público**. Las funcionalidades que le conciernen, con un enfoque particular en la interfaz de usuario (UI), la accesibilidad y la experiencia general, son las siguientes:
+
+- **Usuario Final del Transporte Público:**
+    - **Interfaz de Usuario Intuitiva y Consistente:** Para todas las funcionalidades, la aplicación deberá adherirse estrictamente a las guías de diseño de las plataformas: **Material Design para Android** y **Human Interface Guidelines para iOS**. Esto asegura una experiencia de usuario familiar, coherente y fácil de aprender, minimizando la curva de aprendizaje para usuarios con diferentes niveles de habilidad digital.
+    - **Accesibilidad Universal:** La interfaz y las funcionalidades deberán ser accesibles para usuarios con diversas capacidades, siguiendo las pautas de accesibilidad de Google (para Material Design) y Apple (para Human Interface Guidelines). Esto incluye soporte para:
+        - **Lectores de pantalla (VoiceOver en iOS, TalkBack en Android):** Todos los elementos interactivos, textos e imágenes significativas deberán tener etiquetas y descripciones apropiadas.
+        - **Tamaño de fuente dinámico:** El texto deberá ajustarse a las preferencias de tamaño de fuente del sistema del usuario para facilitar la lectura.
+        - **Contraste de color adecuado:** Se deberán usar combinaciones de colores que aseguren un contraste suficiente para personas con deficiencias visuales.
+        - **Navegación por teclado y controles externos:** Los elementos interactivos deberán ser accesibles y operables mediante teclado o dispositivos de asistencia.
+    - **Registro y Gestión de Perfil Simplificado:** El proceso de creación de una cuenta y la vinculación de tarjetas SUBE deberán ser guiados, con pasos claros y **retroalimentación visual y textual inmediata** sobre el éxito o error de cada acción, en línea con los principios de usabilidad de ambas guías de diseño.
+    - **Personalización de Notificaciones:** El usuario deberá poder acceder fácilmente a una sección de configuración donde pueda gestionar sus preferencias de notificación (activar/desactivar, establecer umbrales de saldo bajo), con una interfaz clara y autoexplicativa.
+    - **Claridad en la Información de Movimientos:** El historial de viajes y recargas deberá presentarse de forma legible y comprensible, utilizando elementos visuales que faciliten la rápida interpretación de los datos. La **disposición de la información** deberá seguir patrones de lectura comunes y jerarquías visuales definidas por las guías de diseño.
+    - **Flujo de Recarga Sencillo y Guiado:** El proceso de recarga virtual, incluyendo la interacción NFC, deberá ser intuitivo y ofrecer instrucciones paso a paso claras, con mensajes de error descriptivos en caso de problemas. La **interacción con el hardware NFC** deberá ser guiada visualmente, indicando al usuario cómo y cuándo acercar la tarjeta.
+    - **Retroalimentación Consistente:** En todas las interacciones, el sistema deberá proporcionar una **retroalimentación visual y auditiva consistente** para confirmar acciones, indicar estados de carga o señalar errores, lo que contribuye a una experiencia de usuario predecible y tranquilizadora.
 
 #### 3.3 Requisitos de Rendimiento
 
@@ -157,7 +204,7 @@ La documentación del sistema deberá ser completa y accesible, incluyendo una g
 
 ### 4. Apéndices
 
-**Restricción de Lenguaje de Programación**
+**Lenguaje de Programación**
 
 Para el desarrollo de la "App SUBE", se establece como una restricción fundamental la utilización de lenguajes de programación y frameworks que soporten la implementación multiplataforma. Esta directriz es esencial para asegurar la compatibilidad del sistema tanto en dispositivos móviles (Android e iOS) como en entornos web modernos, minimizando la duplicación de esfuerzos de desarrollo y facilitando el mantenimiento a largo plazo. 
 
