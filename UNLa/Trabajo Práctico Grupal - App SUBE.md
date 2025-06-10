@@ -483,3 +483,145 @@ UCP = UUCP×TCF×EF
 UCP = 72×1.18×0.515
 UCP = 43.74
 
+## 3er Punto - Historias de Usuario
+
+### HU 1: Registro de Usuario
+
+**Título:** Registro de Usuario  
+**Descripción:**  
+i. Como un/a nuevo/a usuario/a,  
+ii. Quiero registrarme en la aplicación con mis datos personales,  
+iii. Para poder acceder a las funcionalidades de gestión de tarjetas SUBE.
+
+**Criterios de Aceptación:**
+
+1. El sistema debe permitir ingresar nombre completo, DNI, correo electrónico y contraseña.
+2. El sistema debe validar que los campos estén completos y con formato correcto.
+3. El sistema debe enviar un correo de confirmación con enlace para activar la cuenta.
+4. El sistema debe activar la cuenta una vez confirmada por el usuario.
+
+**Notas adicionales:**
+
+- La contraseña debe tener al menos 8 caracteres, incluir una mayúscula, una minúscula y un número.
+- No se puede registrar más de una cuenta con el mismo DNI o correo.
+- La activación es obligatoria para poder iniciar sesión.
+
+### HU 2: Asociar Tarjeta SUBE
+
+**Título:** Asociar Tarjeta SUBE  
+**Descripción:**  
+i. Como un/a usuario/a registrado/a,  
+ii. Quiero asociar una tarjeta SUBE a mi cuenta,  
+iii. Para poder visualizar su saldo y movimientos desde la app.
+
+**Criterios de Aceptación:**
+
+1. El sistema debe permitir ingresar el número completo de tarjeta SUBE (16 dígitos).
+2. El sistema debe validar el formato del número y verificar que no esté asociada a otra cuenta.
+3. El sistema debe confirmar la asociación con un mensaje visual y/o correo electrónico.
+
+**Notas adicionales:**
+
+- Un usuario puede asociar hasta 5 tarjetas distintas.
+- Las tarjetas asociadas se muestran en una lista de gestión personal.
+- El sistema debe consultar la API oficial del sistema SUBE para validar la tarjeta.
+
+### HU 3: Consultar Saldo
+
+**Título:** Consultar Saldo  
+**Descripción:**  
+i. Como un/a usuario/a registrado/a con tarjeta asociada,  
+ii. Quiero ver el saldo disponible en mi tarjeta SUBE,  
+iii. Para saber si necesito realizar una recarga antes de viajar.
+
+**Criterios de Aceptación:**
+
+1. El sistema debe mostrar el saldo actualizado en tiempo real de cada tarjeta asociada.
+2. El sistema debe indicar fecha y hora de la última actualización.
+3. El saldo debe visualizarse en menos de 2 segundos bajo condiciones normales de conectividad.
+
+**Notas adicionales:**
+
+- El sistema obtiene el saldo en tiempo real a través de la API del sistema SUBE.
+- En caso de múltiples tarjetas, todas deben estar visibles en la interfaz.
+- Puede ofrecerse almacenamiento temporal del último saldo en cache (mejora futura).
+
+### HU 4: Consultar Últimos Movimientos
+
+**Título:** Consultar Últimos Movimientos  
+**Descripción:**  
+i. Como un/a usuario/a registrado/a,  
+ii. Quiero ver los movimientos (viajes y recargas) de mi tarjeta SUBE,  
+iii. Para poder llevar un control de mis gastos de transporte.
+
+**Criterios de Aceptación:**
+
+1. El sistema debe mostrar al menos los últimos 20 movimientos.
+2. Debe incluir tipo de operación, fecha, monto y línea de transporte (si aplica).
+3. El usuario debe poder filtrar los movimientos por tipo y rango de fechas.
+
+**Notas adicionales:**
+
+- El historial puede tener una demora de hasta 24 horas en reflejar nuevas operaciones.
+- El sistema consume esta información desde la API del sistema SUBE.
+- Puede incluirse opción para exportar a PDF o Excel en versiones futuras.
+
+### HU 5: Recargar Saldo
+
+**Título:** Recargar Saldo  
+**Descripción:**  
+i. Como un/a usuario/a registrado/a con tarjeta asociada,  
+ii. Quiero realizar una recarga virtual utilizando medios de pago digitales,  
+iii. Para aumentar el saldo de mi tarjeta sin acudir a una terminal física.
+
+**Criterios de Aceptación:**
+
+1. El sistema debe permitir seleccionar tarjeta, ingresar monto, elegir medio de pago y confirmar.
+2. Debe validarse el monto mínimo y máximo permitido.
+3. El usuario debe recibir confirmación visual y vía correo electrónico.
+4. El saldo debe estar disponible para acreditación en las siguientes 24 horas.
+
+**Notas adicionales:**
+
+- La app se integra con pasarelas de pago como MercadoPago, Ualá y tarjetas bancarias.
+- El sistema debe cumplir con los estándares PCI-DSS para transacciones seguras.
+- Si el dispositivo cuenta con NFC, debe ofrecer la validación inmediata desde el celular.
+
+## 4to Punto - Estimación de Esfuerzo (para cada historia de usuario)
+
+### Estimación de Esfuerzo con Planning Poker
+
+**HU1 – Registro de Usuario**  
+Cartas elegidas: Ariel (2), Nahuel (2), Dante (2)  
+Todos estuvieron de acuerdo en usar esta historia como referencia base por su complejidad intermedia (validación de datos, almacenamiento, correo de confirmación).  
+**Resultado:** 2 puntos
+
+**HU2 – Asociar Tarjeta SUBE**  
+Cartas elegidas: Ariel (2), Nahuel (1), Dante (2)  
+Aunque Nahuel consideró que era más simple que el registro, durante la discusión se acordó que la integración con el sistema SUBE justifica un esfuerzo similar.  
+**Resultado:** 2 puntos
+
+**HU3 – Consultar Saldo**  
+Cartas elegidas: Ariel (1), Nahuel (1), Dante (1)  
+Todos coincidieron en que es la historia más simple. Sólo implica mostrar información consumida desde una API.  
+**Resultado:** 1 punto
+
+**HU4 – Consultar Últimos Movimientos**  
+Cartas elegidas: Ariel (3), Nahuel (2), Dante (3)  
+La discusión giró en torno a la mayor carga lógica de esta historia (paginado, filtros, presentación estructurada). Se decidió tomar la opción más alta.  
+**Resultado:** 3 puntos
+
+**HU5 – Recargar Saldo**  
+Cartas elegidas: Ariel (5), Nahuel (5), Dante (8)  
+Aunque Dante propuso 8 por la complejidad del NFC y la seguridad de pagos, Ariel y Nahuel sugirieron que 5 es más apropiado para esta release inicial. Se optó por mantener el valor más frecuente para evitar sobreestimar.
+**Resultado:** 5 puntos
+
+### Tabla Final - Estimación de Esfuerzo
+
+| Historia de Usuario                 | Esfuerzo Estimado | Complejidad Relativa                                            |
+| ----------------------------------- | ----------------- | --------------------------------------------------------------- |
+| HU1 – Registro de Usuario           | **2**             | Historia base. Validaciones + correo.                           |
+| HU2 – Asociar Tarjeta SUBE          | **2**             | Requiere validación de API externa.                             |
+| HU3 – Consultar Saldo               | **1**             | Interacción simple, sin lógica compleja.                        |
+| HU4 – Consultar Últimos Movimientos | **3**             | Listado, filtros, interacción más extensa con API.              |
+| HU5 – Recargar Saldo                | **5**             | Multipasos, integración con pagos, validaciones, NFC. Compleja. |
